@@ -27,11 +27,20 @@ function render(){
     makeIngredients();
     var listEl = document.getElementById('ingredients-list');
     for(var i = 0; i < ingredients.length; i++){
-        var itemEl = document.createElement('li');
-        itemEl.textContent = ingredients[i].name;
-        console.log('item', itemEl);
-        listEl.appendChild(itemEl);
-        itemEl.onclick = clickIngredient;
+        var inputEl = document.createElement('input');
+        
+        inputEl.type = 'checkbox';
+        inputEl.value = ingredients[i].name;
+        inputEl.id = [i]+'id';
+
+        labelEl = document.createElement('label');
+        labelEl.htmlFor= [i]+'id';
+        labelEl.textContent = ingredients[i].name;
+        
+        console.log(labelEl);   
+        listEl.appendChild(inputEl);
+        listEl.appendChild(labelEl);
+        inputEl.onclick = clickIngredient;
     } 
 }
 render();
