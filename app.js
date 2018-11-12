@@ -5,6 +5,7 @@
 //test
 var ingredients =[];
 var cookieType = [];
+var baseRecipe;
 
 function Ingredient(name, id){
     this.name = name;
@@ -82,21 +83,6 @@ function renderCookieType(){
 renderCookieType();
 renderIngredients();
 
-function checkIfTrue(){
-	var checkBox = document.getElementById('0-cookie');
-	if(checkBox.checked === true){
-		console.log('is checked true?', checkBox.value);
-	}
-}
-checkIfChecked();
-// function clickIngredient(event){
-// 	if(/*event is checked*/){
-// 		var recipeEl = document.getElementById('recipe');
-// 		var ingredientsEl = document.createElement('ul');
-// 		ingredientsEl.textContent = event.target.dataset.name;
-// 		recipeEl.appendChild(ingredientsEl);
-// 	}	
-// }
 
 
 //BOTTONS
@@ -109,7 +95,55 @@ function resetSurvey() {
   location.reload();
 }
 
+//Pay attention to this stuff
+var chocolateChipRecipe = {
+    ingredients: ['5 cups flour', 
+    '3 eggs', 
+    '1 cup butter', 
+    '3/4 cup sugar', 
+    '3/4 cups brown sugar', 
+    '1 tps salt', 
+    '1 tsp vannila', 
+    '1 tsp baking power',
+    '1 cup chocola chips'],
+    instructions: ['[rehead oven to 350',
+    'Cream butter with sugar until smooth',
+    'beat eggs until barely mixed, add eggs to butter mixture, beat throuroly',
+    'add flour and other dry ingredients',
+    'add chocolate chips',
+    'roll into 1 inch ball, place on ungreated baking sheet, and bake for 20 minutes'],
+}
+var sugarCookieRecipe = {
+    ingredients: [],
+    instructions: [],
+    
+}
 
+var oatmealCookieRecipe = {
+    ingredients: [],
+    instructions: [],
+}
+
+var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
+document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('click', function(event){
+        if (event.target.checked){
+            checkIfTrue();
+        }
+    })
+})
+function checkIfTrue(){
+    for (var i = 0; i < baseCookieRecipes.length; i++ ){
+        var checkBox = document.getElementById([i]+'-cookie');
+        if(checkBox.checked === true){
+            baseRecipe = baseCookieRecipes[i];
+            console.log('baseRecipe', baseRecipe);
+        }
+    }
+}
+checkIfTrue();
+
+//ignore this function!
 function renderRecipe() {
     //create parent elements
     var recipeEl = document.getElementById('recipe');
@@ -180,4 +214,5 @@ function renderRecipe() {
 renderInstructions();
 renderIngredientsList();
 }
+
 renderRecipe();
