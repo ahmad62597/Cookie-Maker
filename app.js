@@ -23,6 +23,13 @@ function makeIngredients(){
 }
 makeIngredients();
 console.log('ingredient', ingredients);
+function render(){
+    var listEl = document.getElementById('ingreidents-list');
+    var itemEl = document.createElement('li');
+    for(var i = 0; i < ingredients.length; i++){
+        itemEl.textContent = ingredients[i];
+    }
+}
 
 
 //BOTTONS
