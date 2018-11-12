@@ -19,17 +19,19 @@ function makeIngredients(){
     var cinnamon = new Ingredient('cinnamon', 'cinnamon');
     var sprinkles = new Ingredient('sprinkles', 'sprinkles');
     var frosting = new Ingredient('frosting', 'frosting');
-    var nuts = new Ingredient('nut', 'nuts');
+    var nuts = new Ingredient('nuts', 'nuts');
 }
 makeIngredients();
 console.log('ingredient', ingredients);
 function render(){
-    var listEl = document.getElementById('ingreidents-list');
-    var itemEl = document.createElement('li');
+    var listEl = document.getElementById('ingredients-list');
     for(var i = 0; i < ingredients.length; i++){
-        itemEl.textContent = ingredients[i];
-    }
+        var itemEl = document.createElement('li');
+        itemEl.textContent = ingredients[i].name;
+        listEl.appendChild(itemEl);
+    } 
 }
+render();
 
 
 //BOTTONS
