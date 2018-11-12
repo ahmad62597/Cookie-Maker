@@ -38,6 +38,7 @@ function renderIngredients(){
     makeIngredients();
     var listEl = document.getElementById('ingredients-list');
     for(var i = 0; i < ingredients.length; i++){
+        var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
         
         inputEl.type = 'checkbox';
@@ -49,8 +50,9 @@ function renderIngredients(){
         labelEl.textContent = ingredients[i].name;
         
         console.log(labelEl);   
-        listEl.appendChild(inputEl);
-        listEl.appendChild(labelEl);
+        listEl.appendChild(liEl);
+        liEl.appendChild(inputEl);
+        liEl.appendChild(labelEl);
         //inputEl.onclick = clickIngredient;
     } 
 }
@@ -58,7 +60,9 @@ function renderIngredients(){
 function renderCookieType(){
     makeCookieType();
     var listEl = document.getElementById('cookie-type');
+    
     for(var i = 0; i < cookieType.length; i++){
+        var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
         
         inputEl.type = 'checkbox';
@@ -69,9 +73,9 @@ function renderCookieType(){
         labelEl.htmlFor= [i]+'-cookie';
         labelEl.textContent = cookieType[i].name;
         
-        console.log(labelEl);   
-        listEl.appendChild(inputEl);
-        listEl.appendChild(labelEl);
+        listEl.appendChild(liEl);
+        liEl.appendChild(inputEl);
+        liEl.appendChild(labelEl);
         //inputEl.onclick = clickIngredient;
     } 
 }
