@@ -13,3 +13,8 @@
 
 ##As a Job Seeker
 - As a job seeker, I want to show off my skills in JavaScript, CSS and HTML, in a project I can show to future employers.
+
+
+##Stretch Goals
+- As a user, I want to be able to see the cookie before it's made (watch animations based on my choices).
+- As a user, I want to be able to save my favorite new cookie recipes.
