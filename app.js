@@ -66,7 +66,7 @@ function renderCookieType(){
         var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
         
-        inputEl.type = 'checkbox';
+        inputEl.type = 'radio';
         inputEl.value = cookieType[i].name;
         inputEl.id = [i]+'-cookie';
         
