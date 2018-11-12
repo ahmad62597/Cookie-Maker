@@ -10,6 +10,7 @@ function Ingredient(name, id){
     this.id = id;
     ingredients.push(this);
 }
+//create the ingredient objects
 function makeIngredients(){
     var oatmeal = new Ingredient('oatmaeal', 'oatmeal');
     var chocolate_chip = new Ingredient('chocolate_chip', 'chocolate_chip');
@@ -21,17 +22,23 @@ function makeIngredients(){
     var frosting = new Ingredient('frosting', 'frosting');
     var nuts = new Ingredient('nuts', 'nuts');
 }
-makeIngredients();
-console.log('ingredient', ingredients);
+
 function render(){
+    makeIngredients();
     var listEl = document.getElementById('ingredients-list');
     for(var i = 0; i < ingredients.length; i++){
         var itemEl = document.createElement('li');
         itemEl.textContent = ingredients[i].name;
+        console.log('item', itemEl);
         listEl.appendChild(itemEl);
+        itemEl.onclick = clickIngredient;
     } 
 }
 render();
+
+function clickIngredient(event){
+   //do something
+}
 
 
 //BOTTONS
@@ -43,3 +50,76 @@ reset.addEventListener('click', resetSurvey);
 function resetSurvey() {
   location.reload();
 }
+
+
+function renderRecipe() {
+    //create parent elements
+    var recipeEl = document.getElementById('recipe');
+    var titleEl = document.createElement('h3');
+    //append elements
+    recipeEl.appendChild(titleEl);
+    //add text content to title
+    titleEl.textContent = 'Your Recipe';
+
+    function renderIngredientsList (){
+        var ingredientsEl = document.createElement('ul');
+        recipeEl.appendChild(ingredientsEl);
+    }
+
+    function renderInstructions (){
+        var instructionsEl = document.createElement('ol');
+        recipeEl.appendChild(instructionsEl);
+
+        
+        var stepList = [];
+        function StepList (stepNumber, instructions){
+            this.stepNumber = stepNumber;
+            this.instructions = instructions;
+
+            stepList.push(this);
+        }
+
+        //ignore all these variables, they're place holders until daniel gives me some variables from the click-clicky
+
+        var sprinkles;
+        var sugar_cookies;
+        var oatmeal;
+
+        function populateStepList (){
+            new StepList ('One', 'Cream your butter and sugar until smoothe.');
+            new StepList ('Two', 'Beat eggs until barely mixed, then add to butter and sugar mixture. Beat well.');
+            new StepList ('Three','Add dry ingredients (flour, salt, baking soda) and mix');
+            if (sprinkles) {
+                new StepList ('Four' , 'add sprinkles')
+            };
+            if (sugar_cookies) {
+                new StepList ('Five','Chill cookies 1 hour, roll out to 1/2 to 1.4 inch, cut out and place on greased tray')
+            } else {
+                new StepList ('Five', 'Roll cookies into 1 inch balls and set on ungreased cookie tray')
+            };
+            if (sugar_cookies) {
+                new StepList ('Six','Bake at whatever temperate');
+            } else if (oatmeal) {
+                new StepList ('Six' , 'Bake at a different temperate');
+            } else {
+                new StepList ('Six', 'bake cookies!!')
+            }
+            new StepList ('Seven', 'enjoy your cookies');
+
+            console.log(stepList);
+        }
+        populateStepList();
+        console.log(stepList);
+
+        for (var i = 0; i < stepList.length; i++){
+            var liEl = document.createElement('li');
+            liEl.textContent = stepList[i].instructions;
+            console.log(liEl);
+            instructionsEl.appendChild(liEl);
+        }
+
+    }
+renderInstructions();
+renderIngredientsList();
+}
+renderRecipe();
