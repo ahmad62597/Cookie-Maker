@@ -9,11 +9,19 @@ img{height: 125px;
 }
 
 ul#tabs li {
-    display:inline;
-    list-style: none !important;
+    box-sizing: border-box;
+    display:inline-block;
+    list-style-type: none;
     padding: 0px;
     margin: 0px;
-    padding-right: 100px;
+    /* padding-right: 5px; */
+    padding-left: 170px;
     line-height: 42px;
+    overflow: hidden;
+    background-color: rgb(15, 82, 161);
+    width: 33%;
+}
+a{
+    color: white;
 }
 

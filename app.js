@@ -85,7 +85,7 @@ renderIngredients();
 
 
 
-//BOTTONS
+//BUTTONS
 //Set global variables:
 var reset = document.getElementById('reset');
 //Add an event listener:
@@ -214,5 +214,5 @@ function renderRecipe() {
 renderInstructions();
 renderIngredientsList();
 }
-
 renderRecipe();
+
