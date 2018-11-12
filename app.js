@@ -4,17 +4,28 @@
 //clicky-clicky
 //test
 var ingredients =[];
+var cookieType = [];
 
 function Ingredient(name, id){
     this.name = name;
     this.id = id;
     ingredients.push(this);
 }
+
+function CookieType(name,id){
+    this.name = name;
+    this.id = id;
+    cookieType.push(this);
+}
+
+function makeCookieType() {
+    var chocolate_chip_cookie = new CookieType('chocolate_chip_cookie', 'chocolate_chip_cookie');
+    var sugar_cookie = new CookieType('sugar_cookie' , 'sugar_cookie');
+    var oatmeal_cookie = new CookieType('oatmeal_cookie', 'oatmeal_cookie');
+}
 //create the ingredient objects
 function makeIngredients(){
-    var oatmeal = new Ingredient('oatmaeal', 'oatmeal');
     var chocolate_chip = new Ingredient('chocolate_chip', 'chocolate_chip');
-    var sugar_cookie = new Ingredient('sugar_cookie', 'sugar_cookie');
     var coconut = new Ingredient('coconut', 'coconut');
     var peanut_butter = new Ingredient('peanut_butter', 'peanut_butter');
     var cinnamon = new Ingredient('cinnamon', 'cinnamon');
@@ -23,18 +34,49 @@ function makeIngredients(){
     var nuts = new Ingredient('nuts', 'nuts');
 }
 
-function render(){
+function renderIngredients(){
     makeIngredients();
     var listEl = document.getElementById('ingredients-list');
     for(var i = 0; i < ingredients.length; i++){
-        var itemEl = document.createElement('li');
-        itemEl.textContent = ingredients[i].name;
-        console.log('item', itemEl);
-        listEl.appendChild(itemEl);
-        itemEl.onclick = clickIngredient;
+        var inputEl = document.createElement('input');
+        
+        inputEl.type = 'checkbox';
+        inputEl.value = ingredients[i].name;
+        inputEl.id = [i]+'id';
+
+        labelEl = document.createElement('label');
+        labelEl.htmlFor= [i]+'id';
+        labelEl.textContent = ingredients[i].name;
+        
+        console.log(labelEl);   
+        listEl.appendChild(inputEl);
+        listEl.appendChild(labelEl);
+        inputEl.onclick = clickIngredient;
     } 
 }
-render();
+
+function renderCookieType(){
+    makeCookieType();
+    var listEl = document.getElementById('cookie-type');
+    for(var i = 0; i < cookieType.length; i++){
+        var inputEl = document.createElement('input');
+        
+        inputEl.type = 'checkbox';
+        inputEl.value = cookieType[i].name;
+        inputEl.id = [i]+'-cookie';
+        
+        labelEl = document.createElement('label');
+        labelEl.htmlFor= [i]+'-cookie';
+        labelEl.textContent = cookieType[i].name;
+        
+        console.log(labelEl);   
+        listEl.appendChild(inputEl);
+        listEl.appendChild(labelEl);
+        inputEl.onclick = clickIngredient;
+    } 
+}
+renderCookieType();
+renderIngredients();
 
 function clickIngredient(event){
 	var recipeEl = document.getElementById('recipe');
