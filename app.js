@@ -57,7 +57,7 @@ function renderIngredients(){
 
 function renderCookieType(){
     makeCookieType();
-    var listEl = document.getElementById('ingredients-list');
+    var listEl = document.getElementById('cookie-type');
     for(var i = 0; i < cookieType.length; i++){
         var inputEl = document.createElement('input');
         
