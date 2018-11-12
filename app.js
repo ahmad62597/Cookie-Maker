@@ -51,7 +51,7 @@ function renderIngredients(){
         console.log(labelEl);   
         listEl.appendChild(inputEl);
         listEl.appendChild(labelEl);
-        inputEl.onclick = clickIngredient;
+        //inputEl.onclick = clickIngredient;
     } 
 }
 
@@ -72,18 +72,27 @@ function renderCookieType(){
         console.log(labelEl);   
         listEl.appendChild(inputEl);
         listEl.appendChild(labelEl);
-        inputEl.onclick = clickIngredient;
+        //inputEl.onclick = clickIngredient;
     } 
 }
 renderCookieType();
 renderIngredients();
 
-function clickIngredient(event){
-	var recipeEl = document.getElementById('recipe');
-	var ingredientsEl = document.createElement('ul');
-	ingredientsEl.textContent = event.target.dataset.name;
-	recipeEl.appendChild(ingredientsEl);
+function checkIfTrue(){
+	var checkBox = document.getElementById('0-cookie');
+	if(checkBox.checked === true){
+		console.log('is checked true?', checkBox.value);
+	}
 }
+checkIfChecked();
+// function clickIngredient(event){
+// 	if(/*event is checked*/){
+// 		var recipeEl = document.getElementById('recipe');
+// 		var ingredientsEl = document.createElement('ul');
+// 		ingredientsEl.textContent = event.target.dataset.name;
+// 		recipeEl.appendChild(ingredientsEl);
+// 	}	
+// }
 
 
 //BOTTONS
