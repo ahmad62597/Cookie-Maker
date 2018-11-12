@@ -45,12 +45,52 @@ function renderRecipe() {
     //add text content to title
     titleEl.textContent = 'Your Recipe';
 
+    function renderIngredientsList (){
+        var ingredientsEl = document.createElement('ul');
+    }
+
+    function renderInstructions (){
+        var instructionsEl = document.createElement('ol');
+        recipeEl.appendChild(instructionsEl);
+
+        
+        var stepList = [];
+        function StepList (stepNumber, instructions){
+            this.stepNumber = stepNumber;
+            this.instructions = instructions;
+
+            stepList.push(this);
+        }
+        var sprinkles;
+        var sugar_cookies;
+        var oatmeal;
 
 
+        new StepList ('One', 'Cream your butter and sugar until smoothe.');
+        new StepList ('Two', 'Beat eggs until barely mixed, then add to butter and sugar mixture. Beat well.');
+        new StepList ('Three','Add dry ingredients (flour, salt, baking soda) and mix');
+        if (sprinkles) {
+            new StepList ('Four' , 'add sprinkles')
+        };
+        if (sugar_cookies) {
+            new StepList ('Five','Chill cookies 1 hour, roll out to 1/2 to 1.4 inch, cut out and place on greased tray')
+        } else {
+            new StepList ('Five', 'Roll cookies into 1 inch balls and set on ungreased cookie tray')
+        };
+        if (sugar_cookies) {
+            new StepList ('Six','Bake at whatever temperate');
+        } else if (oatmeal) {
+            new StepList ('Six' , 'Bake at a different temperate');
+        } else {
+            new StepList ('Six', 'bake cookies!!')
+        }
+        new StepList ('Seven', 'enjoy your cookies');
 
-    var ingredientsEl = document.createElement('ul');
-    var instructionsEl = document.createElement('ol');
+        console.log(stepList);
 
+    }
+renderInstructions();
     
 
 }
+renderRecipe();
