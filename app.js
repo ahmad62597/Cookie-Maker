@@ -8,7 +8,7 @@ var ingredients =[];
 function Ingredient(name, id){
     this.name = name;
     this.id = id;
-    this.push(ingredients);
+    ingredients.push(this);
 }
 function makeIngredients(){
     var oatmeal = new Ingredient('oatmaeal', 'oatmeal');
