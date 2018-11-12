@@ -34,3 +34,23 @@ reset.addEventListener('click', resetSurvey);
 function resetSurvey() {
   location.reload();
 }
+
+
+function renderRecipe() {
+    //create parent elements
+    var recipeEl = document.getElementById('recipe');
+    var titleEl = document.createElement('h3');
+    //append elements
+    recipeEl.appendChild(titleEl);
+    //add text content to title
+    titleEl.textContent = 'Your Recipe';
+
+
+
+
+    var ingredientsEl = document.createElement('ul');
+    var instructionsEl = document.createElement('ol');
+
+    
+
+}
