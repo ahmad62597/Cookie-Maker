@@ -10,6 +10,7 @@ function Ingredient(name, id){
     this.id = id;
     ingredients.push(this);
 }
+//create the ingredient objects
 function makeIngredients(){
     var oatmeal = new Ingredient('oatmaeal', 'oatmeal');
     var chocolate_chip = new Ingredient('chocolate_chip', 'chocolate_chip');
@@ -19,10 +20,25 @@ function makeIngredients(){
     var cinnamon = new Ingredient('cinnamon', 'cinnamon');
     var sprinkles = new Ingredient('sprinkles', 'sprinkles');
     var frosting = new Ingredient('frosting', 'frosting');
-    var nuts = new Ingredient('nut', 'nuts');
+    var nuts = new Ingredient('nuts', 'nuts');
 }
-makeIngredients();
-console.log('ingredient', ingredients);
+
+function render(){
+    makeIngredients();
+    var listEl = document.getElementById('ingredients-list');
+    for(var i = 0; i < ingredients.length; i++){
+        var itemEl = document.createElement('li');
+        itemEl.textContent = ingredients[i].name;
+        console.log('item', itemEl);
+        listEl.appendChild(itemEl);
+        itemEl.onclick = clickIngredient;
+    } 
+}
+render();
+
+function clickIngredient(event){
+   //do something
+}
 
 
 //BOTTONS
