@@ -37,7 +37,10 @@ function render(){
 render();
 
 function clickIngredient(event){
-   //do something
+	var recipeEl = document.getElementById('recipe');
+	var ingredientsEl = document.createElement('ul');
+	ingredientsEl.textContent = event.target.dataset.name;
+	recipeEl.appendChild(ingredientsEl);
 }
 
 
