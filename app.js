@@ -69,6 +69,7 @@ function renderCookieType(){
         inputEl.type = 'radio';
         inputEl.value = cookieType[i].name;
         inputEl.id = [i]+'-cookie';
+        inputEl.name = 'cookie'
         
         labelEl = document.createElement('label');
         labelEl.htmlFor= [i]+'-cookie';
