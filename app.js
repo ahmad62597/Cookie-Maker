@@ -279,3 +279,12 @@ buttonEl.addEventListener('click', function(){
 });
 
 
+//This is for specifically printing the instructions from the recipe
+function printDiv(printDiv) {
+
+    var printContents = document.getElementById("print-recipe").innerHTML;
+    w=window.open();
+    w.document.write(printContents);
+    w.print();
+    w.close();
+   }

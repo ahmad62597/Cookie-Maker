@@ -31,23 +31,28 @@
        </p>
    </header>
     <main id="main-content">
-            
-
         <div id="pick-cookie">
             <div class="list">
 							<ul id="cookie-type"></ul>
 							<ul id="addon-list"></ul>
 						</div>	
+        <div id = pick-cookie>
+            <ul id="cookie-type"></ul>
+            <ul id="ingredients-list"></ul>
+
             <img src="assets/Cookies.jpg" alt="Cookies">
+            
         </div>
 				<button id="reset" type="click">Restart</button>
 			<div class="bootom-line">
 					<hr>
 			</div>
 				<section id = "recipe-section"></section>
-				
+			  <div id="print-recipe">
+        <section id = "recipe"></section>
+        <input type="button" onclick="printDiv('print-recipe')" value="Print the Recipe!"/>
+        </div> 	
 		</main>
-
     <footer>
     </footer>
     <script src="app.js"></script>

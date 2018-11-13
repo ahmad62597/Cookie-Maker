@@ -2,7 +2,8 @@ html{
     margin: 0px 30px;
 }
 body {
-    background-color: rgba(207, 248, 248, 0.767)
+    background-color: white;
+    margin: auto;
     
 }
 
@@ -33,11 +34,20 @@ a{
     color: white;
 }
 
-
 #pick-cookie{
     display:inline-block;
-    padding-top:40px;
-    color: rgb(70, 33, 9)
+    padding-top:20px;
+    padding-left:400px;
+    color: rgb(70, 33, 9);
+    /* border-style: groove;
+    border-width: thick;
+    border-color: gray; */
+}
+
+#pick-cookie ul{border-style: groove;
+    border-width: thick;
+    border-color: gray;
+    margin-top:20px;
 }
 
 #pick-cookie img {
