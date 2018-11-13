@@ -58,11 +58,11 @@ function Ingredient(name, id){
 //     cookieType.push(this);
 // }
 //funciton to make all cookie objects
-function makeCookieType() {
-    var chocolate_chip_cookie = new CookieType('chocolate_chip_cookie', 'chocolate_chip_cookie');
-    var sugar_cookie = new CookieType('sugar_cookie' , 'sugar_cookie');
-    var oatmeal_cookie = new CookieType('oatmeal_cookie', 'oatmeal_cookie');
-}
+// function makeCookieType() {
+//     var chocolate_chip_cookie = new CookieType('chocolate_chip_cookie', 'chocolate_chip_cookie');
+//     var sugar_cookie = new CookieType('sugar_cookie' , 'sugar_cookie');
+//     var oatmeal_cookie = new CookieType('oatmeal_cookie', 'oatmeal_cookie');
+// }
 //create the ingredient objects
 function makeIngredients(){
     var chocolate_chip = new Ingredient('chocolate_chip', 'chocolate_chip');
@@ -86,7 +86,7 @@ function renderIngredients(){
 				inputEl.value = ingredients[i].name;
 				inputEl.id = [i]+'id';
 				//giving addOns a data attribute
-				inputEl.dataset.extras = baseCookieRecipe.id;
+				inputEl.dataset.extras = ingredients[i].id;
 
         var labelEl = document.createElement('label');
         labelEl.htmlFor= [i]+'id';
@@ -102,10 +102,10 @@ function renderIngredients(){
 
 //renders base cookie type to the page
 function renderCookieType(){
-    makeCookieType();
+    //makeCookieType();
     var listEl = document.getElementById('cookie-type');
     
-    for(var i = 0; i < cookieType.length; i++){
+    for(var i = 0; i < baseCookieRecipes.length; i++){
         var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
         
@@ -144,16 +144,14 @@ function resetSurvey() {
 
 //Pay attention to this stuff
 
-
-
-
 //event listener to see if boxes get checked
 
 document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('click', function(event){
 			var isChecked = event.target.checked;
 			if (event.target.dataset.baseCookie){
-					checkIfTrueBaseCookieRecipe();
+				var baseCookie = event.target.checked;
+					checkIfTrueBaseCookieRecipe(baseCookie, isChecked);
 			}
 			else if(event.target.dataset.extras) {
 				console.log(event.target.dataset);
@@ -163,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 })
 
-function checkIfTrueBaseCookieRecipe(){
+function checkIfTrueBaseCookieRecipe(baseCookie, isChecked){
     for (var i = 0; i < baseCookieRecipes.length; i++ ){
         var checkBox = document.getElementById([i]+'-cookie');
         if(checkBox.checked === true){
@@ -177,7 +175,6 @@ checkIfTrueBaseCookieRecipe();
 
 function checkIfTrueAddOns(addOn, isChecked){
 	if(isChecked){
-		//splice into base cookie array
 		baseCookieRecipes[0].ingredients.push(addOn);
 		console.log(baseCookieRecipes[0].ingredients);
 	}
