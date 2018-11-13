@@ -1,3 +1,6 @@
+html{
+    margin: 0px 30px;
+}
 body {
     background-color: white;
     margin: auto;
@@ -25,6 +28,7 @@ ul#tabs li {
     overflow: hidden;
     background-color: rgb(15, 82, 161);
     width: 33%;
+    border-radius: 10px;
 }
 a{
     color: white;
@@ -55,5 +59,16 @@ a{
     border-style: groove;
     border-width: thick;
     border-color: gray;
+    border-radius: 5px;
+    margin-top: 20px;
 }
-
+ 
+.bottom-line{
+    position: relative;
+    top:300px;
+}
+.list{
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
