@@ -74,7 +74,8 @@ var addOn =[];
 
 //var cookieType = [];
 var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
-var baseRecipe;
+//sets default recipe to sugarCookie
+var baseRecipe = sugarCookieRecipe;
 
 
 //constructor for creating add ons. this constructor will be pushed into add on array
