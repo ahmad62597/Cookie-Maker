@@ -1,9 +1,9 @@
 html{
-    margin: 0px 30px;
+    margin: 0px;
 }
 body {
     background-color: white;
-    margin: auto;
+    margin: 10px;
     
 }
 
@@ -19,7 +19,7 @@ img{height: 125px;
     width:100%;
 }
 
-ul#tabs li {
+nav li {
     box-sizing: border-box;
     display:inline-block;
     list-style-type: none;
