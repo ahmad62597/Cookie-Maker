@@ -88,24 +88,6 @@ function AddOn(name, id){
     addOn.push(this);
 }
 
-//constructor function for creating base cookie types
-// Not needed since id and name are a part of the objects
-// function CookieType(name,id){
-//     this.name = name;
-// 		this.id = id;
-	
-//     cookieType.push(this);
-// }
-
-//funciton to make all cookie objects
-// function makeCookieType() {
-//     var chocolate_chip_cookie = new CookieType('chocolate_chip_cookie', 'chocolate_chip_cookie');
-//     var sugar_cookie = new CookieType('sugar_cookie' , 'sugar_cookie');
-//     var oatmeal_cookie = new CookieType('oatmeal_cookie', 'oatmeal_cookie');
-// }
-//create the ingredient objects
-
-//this function makes all of the add ons that will populate the add-on array
 function makeAddOns(){
     var chocolate_chip = new AddOn('chocolate_chip', 'chocolate_chip');
     var coconut = new AddOn('coconut', 'coconut');
@@ -119,7 +101,9 @@ function makeAddOns(){
 //renders the add ons to the page
 function renderAddOns(){
     makeAddOns();
-    var listEl = document.getElementById('addon-list');
+    var divEl = document.getElementById('add-ons');
+    var listEl = document.createElement('ul');
+    divEl.appendChild(listEl);
     for(var i = 0; i < addOn.length; i++){
         var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
@@ -132,9 +116,7 @@ function renderAddOns(){
 
         var labelEl = document.createElement('label');
         labelEl.htmlFor= [i]+'id';
-        labelEl.textContent = addOn[i].name;
-        
-        console.log(labelEl);   
+        labelEl.textContent = addOn[i].name;   
         listEl.appendChild(liEl);
         liEl.appendChild(inputEl);
         liEl.appendChild(labelEl);
@@ -142,39 +124,8 @@ function renderAddOns(){
     } 
 }
 
-//renders base cookie type to the page
-function renderCookieType(){
-    var listEl = document.getElementById('cookie-type');
-    
-    for(var i = 0; i < baseCookieRecipes.length; i++){
-        var liEl = document.createElement('li');
-        var inputEl = document.createElement('input');
-        
 
-        inputEl.type = 'radio';
-        inputEl.name = 'cookies'
-        liEl.id = [i]+'-cookie'
-        inputEl.value = baseCookieRecipes[i].name;
-        inputEl.id = baseCookieRecipes[i].id;
-        //giving base cookies a data attribute
-        inputEl.dataset.baseCookie = baseCookieRecipes[i].id;
-
-        
-        labelEl = document.createElement('label');
-        labelEl.htmlFor= baseCookieRecipes[i].id;
-        labelEl.textContent = baseCookieRecipes[i].name;
-        
-        listEl.appendChild(liEl);
-        liEl.appendChild(inputEl);
-        liEl.appendChild(labelEl);
-        //inputEl.onclick = clickIngredient;
-    } 
-}
-//calls the render functions to create cookie type and add on
-renderCookieType();
 renderAddOns();
-
-
 
 //BUTTONS
 //Set global variables:
@@ -185,43 +136,34 @@ reset.addEventListener('click', resetSurvey);
 function resetSurvey() {
   location.reload();
 }
-
-//Pay attention to this stuff
-
 //event listener to see if boxes get checked
-
-document.addEventListener('DOMContentLoaded', function(){
-	document.addEventListener('click', function(event){
-    var isChecked = event.target.checked;
-    if (event.target.dataset.baseCookie){
-       var baseCookie = event.target.checked;
-      checkIfTrueBaseCookieRecipe(baseCookie, isChecked);
+var cookieTypeSelected;
+var submitEl = document.getElementById('get-cookie');
+var formEl = document.getElementById ('form-one')
+formEl.addEventListener('submit', function(event){
+    event.preventDefault();
+    console.log(event.target.base_cookie_choice);
+    if (event.target.base_cookie_choice.value === 'chocolate_chip'){
+        console.log('chocolate_chip');
+        cookieTypeSelected = chocolateChipRecipe;
+        console.log(cookieTypeSelected);
     }
-    else if(event.target.dataset.extras) {
-			console.log(event.target.dataset);
-			var addOn = event.target.dataset.extras;
-			checkIfTrueAddOns(addOn, isChecked);
+    if (event.target.base_cookie_choice.value === 'sugar_cookie'){
+        console.log('sugar_cookie');
+        cookieTypeSelected = sugarCookieRecipe;
+        console.log(cookieTypeSelected);
     }
-  })
+    if (event.target.base_cookie_choice.value === 'oatmeal_cookie'){
+        console.log('oatmeal_cookie');
+        cookieTypeSelected = oatmealCookieRecipe;
+        console.log(cookieTypeSelected);
+    }
+    renderRecipe();
 })
 
 
-function checkIfTrueBaseCookieRecipe(baseCookie, isChecked){
-		if(isChecked){
-			baseRecipe = baseCookies;
-			//make baseRecipe show the directions
-			console.log('baseRecipe', baseRecipe);
-		}
 
-}
-checkIfTrueBaseCookieRecipe();
-
-function checkIfTrueAddOns(addOn, isChecked){
-	if(isChecked){
-		baseCookieRecipes[0].ingredients.push(addOn);
-		console.log(baseCookieRecipes[0].ingredients);
-	}
-}
+//RENDER
 
 function renderRecipe() {
     console.log(baseRecipe);
@@ -230,7 +172,7 @@ function renderRecipe() {
         recipeElCheck.remove();
     }
     //create parent elements4
-    var recipeSection = document.getElementById('recipe-section');
+    var recipeSection = document.getElementById('recipe-box');
     var recipeEl = document.createElement('div');
     var titleEl = document.createElement('h3');
     //append elements
@@ -242,21 +184,22 @@ function renderRecipe() {
 
     function renderIngredientsList (){
         var ulEl = document.createElement('ul')
+        console.log('base recipe in render ingreidents' , cookieTypeSelected);
         recipeEl.appendChild(ulEl);
-        for (var i = 0; i < baseRecipe.ingredients.length; i++){
+        for (var i = 0; i < cookieTypeSelected.ingredients.length; i++){
             var liEl = document.createElement('li');
             ulEl.appendChild(liEl);
-            liEl.textContent=baseRecipe.ingredients[i];
+            liEl.textContent=cookieTypeSelected.ingredients[i];
         } console.log('running')  
     }
 
      function renderInstructions (){
          var olEl = document.createElement('ol')
          recipeEl.appendChild(olEl);
-         for (var i =0; i < baseRecipe.instructions.length; i++){
+         for (var i =0; i < cookieTypeSelected.instructions.length; i++){
              var liEl=document.createElement('li')
              olEl.appendChild(liEl);
-             liEl.textContent=baseRecipe.instructions[i];
+             liEl.textContent=cookieTypeSelected.instructions[i];
          }
 
      }
@@ -266,17 +209,6 @@ renderInstructions();
 console.log('This code is running')
 }
 
-var buttonEl = document.createElement('button');
-var divEl = document.getElementById('pick-cookie');
-divEl.appendChild(buttonEl);
-buttonEl.textContent = 'Get My Cookie!'
-
-
-buttonEl.addEventListener('click', function(){
-    // event.preventDefault();
-    console.log('the button works')
-    renderRecipe();
-});
 
 
 //This is for specifically printing the instructions from the recipe
