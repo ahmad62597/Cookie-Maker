@@ -98,31 +98,66 @@ function resetSurvey() {
 
 //Pay attention to this stuff
 var chocolateChipRecipe = {
-    ingredients: ['5 cups flour', 
-    '3 eggs', 
-    '1 cup butter', 
-    '3/4 cup sugar', 
-    '3/4 cups brown sugar', 
-    '1 tps salt', 
-    '1 tsp vannila', 
-    '1 tsp baking power',
-    '1 cup chocola chips'],
-    instructions: ['[rehead oven to 350',
-    'Cream butter with sugar until smooth',
-    'beat eggs until barely mixed, add eggs to butter mixture, beat throuroly',
-    'add flour and other dry ingredients',
-    'add chocolate chips',
-    'roll into 1 inch ball, place on ungreated baking sheet, and bake for 20 minutes'],
+    ingredients: ['1 cup butter',
+        '3/4 cups sugar',
+        '3/4 cups brown sugar',
+        '1 teaspoon vanilla',
+        '2 large eggs',
+        '2 1/4 cups flour',
+        '1 tsp baking soda',
+        '1 tsp salt',
+        '2 cups chocolate chips',
+        ],
+    instructions: ['Preheat Oven to 375',
+        'Cream butter and sugar together',
+        'Beat in eggs and vanilla',
+        'Beat in flour, salt and baking powder',
+        'Mix in chocolate chips',
+        'Drop balls into one inch balls into an ungreased cookie tray',
+        'Bake 9 to 11 minutes, cool on a wire rack.'
+        ],
 }
 var sugarCookieRecipe = {
-    ingredients: [],
-    instructions: [],
-    
+    ingredients: ['1/2 cup Sugar',
+        '1/2 cup Butter',
+        '1 tsp Vanilla',
+        '2 eggs',
+        '2 1/2 cup Flour, sifted',
+        '2 tsp double-acting baking powder',
+        '1/2 tsp salt'
+        ],
+    instructions: ['Cream butter and sugar together.',
+        'Beat in eggs and vanilla', 
+        'Add and mix in dry ingredients',
+        'Chill for 3-4 hours',
+        'Preheat Oven to 350 degrees',
+        'Roll cookies to a 1/4 - 1/2 thickness. Use a cookie cutter to shape cookies.',
+        'Place cookies on greased cookie sheet.',
+        'Bake 7 to 12 minutes. Cool on wire rack.'],
 }
 
 var oatmealCookieRecipe = {
-    ingredients: [],
-    instructions: [],
+    ingredients: ['1/2 cup butter',
+        '1/2 cup sugar',
+        '1/2 cup brown sugar',
+        '1 egg',
+        '1 tsp vanilla',
+        '1 tbsp milk',
+        '1 cup sifted flour',
+        '1/2 tsp baking soda',
+        '1/2 tsp baking powder',
+        '1/2 tsp salt',
+        '1 cup uncooked quick oats (I like quakers)',
+        ],
+    instructions: [
+        'Cream butter and sugar together',
+        'Beat in eggs, milk and vanilla',
+        'Add and mix in dry ingredients except oats',
+        'When smooth, mix in oats',
+        'Beat mixture well',
+        'Drop cookies in 1 inch balls onto a greased cookie sheet',
+        'Bake 10 to 12 minutes. Cool on wire wrack'
+    ],
 }
 var baseRecipe = chocolateChipRecipe;
 var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
@@ -144,18 +179,50 @@ function checkIfTrue(){
 }
 checkIfTrue();
 
+
+var finalRecipe = baseRecipe;
+//temp variable
+for (var j = 0; j < ingredients.length; j ++){
+    var thingIsClicked = document.getElementById([j]+'id');
+    if (thingIsClicked === true){
+        var thingClicked = thingIsClicked.name;
+    }
+}
+//basic logic 
+if (baseRecipe === chocolateChipRecipe){
+    if (thingClicked) {
+        finalRecipe.ingredients.push('name')
+        finalRecipe.instructions.splice(1, 0, 'name instructions');
+    }
+    // if if if else
+} else if (baseRecipe === oatmealCookieRecipe){
+    if (thingClicked) {
+    }
+    // if if if else
+} else { //default is sugar cookie
+    if (thingClicked) {
+    } 
+}
 //ignore this function!
 function renderRecipe() {
-    //create parent elements
-    var recipeEl = document.getElementById('recipe');
+    recipeElCheck = document.getElementById('recipe');
+    if (recipeElCheck){
+        recipeElCheck.remove();
+    }
+    //create parent elements4
+    var recipeSection = document.getElementById('recipe-section');
+    var recipeEl = document.createElement('div');
     var titleEl = document.createElement('h3');
     //append elements
+    recipeSection.appendChild(recipeEl);
     recipeEl.appendChild(titleEl);
     //add text content to title
     titleEl.textContent = 'Your Recipe';
+    recipeEl.id = 'recipe';
 
     function renderIngredientsList (){
         var ulEl = document.createElement('ul')
+        recipeEl.appendChild(ulEl);
         for (var i = 0; i < baseRecipe.ingredients.length; i++){
             var liEl = document.createElement('li');
             ulEl.appendChild(liEl);
@@ -164,11 +231,12 @@ function renderRecipe() {
     }
 
      function renderInstructions (){
-         var ulEl = document.createElement('ul')
-         for (var i =0; i < baseRecipe.ingredients.length; i++){
+         var olEl = document.createElement('ol')
+         recipeEl.appendChild(olEl);
+         for (var i =0; i < baseRecipe.instructions.length; i++){
              var liEl=document.createElement('li')
-             ulEl.appendChild(liEl);
-             liEl.textContent=baseRecipe.ingredients[i];
+             olEl.appendChild(liEl);
+             liEl.textContent=baseRecipe.instructions[i];
          }
 
      }
@@ -177,5 +245,18 @@ renderIngredientsList();
 renderInstructions();
 console.log('This code is running')
 }
-renderRecipe();
+
+var buttonEl = document.createElement('button');
+var divEl = document.getElementById('pick-cookie');
+divEl.appendChild(buttonEl);
+buttonEl.textContent = 'Get My Cookie!'
+
+
+buttonEl.addEventListener('click', function(){
+    // event.preventDefault();
+    console.log('the button works')
+    renderRecipe();
+});
+
+
 
