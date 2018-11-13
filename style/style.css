@@ -62,7 +62,12 @@ a{
     border-radius: 5px;
     margin-top: 20px;
 }
- 
+#circle {
+    background: #f00;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
 .bottom-line{
     position: relative;
     top:300px;
