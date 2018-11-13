@@ -110,7 +110,8 @@ function renderCookieType(){
         var inputEl = document.createElement('input');
         
 
-        inputEl.type = 'checkbox';
+        inputEl.type = 'radio';
+        inputEl.name = 'cookies'
         inputEl.value = baseCookieRecipes[i].name;
 				inputEl.id = baseCookieRecipes[i].id;
 				//giving base cookies a data attribute
