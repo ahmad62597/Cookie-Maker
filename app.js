@@ -76,7 +76,7 @@ var addOn =[];
 var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
 
 //sets default recipe to sugarCookie
-var baseRecipe = sugarCookieRecipe;
+
 
 
 
@@ -99,20 +99,21 @@ function makeAddOns(){
 }
 
 //renders the add ons to the page
-function renderAddOns(){
-    makeAddOns();
+makeAddOns();
+var extraCounter = addOn.length;
+function renderAddOns(addOnNumber){
     var divEl = document.getElementById('add-ons');
     var listEl = document.createElement('ul');
     divEl.appendChild(listEl);
-    for(var i = 0; i < addOn.length; i++){
+    listEl.textContent = 'Add On '+ addOnNumber;
+    for(var i = 0; i < extraCounter; i++){
         var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
         
-        inputEl.type = 'checkbox';
-				inputEl.value = addOn[i].name;
-				inputEl.id = [i]+'id';
-				//giving addOns a data attribute
-				inputEl.dataset.extras = addOn[i].id;
+        inputEl.type = 'radio';
+        inputEl.value = addOn[i].name+addOnNumber;
+        inputEl.id = [i]+'id';
+        inputEl.name = 'add_ons'+addOnNumber;
 
         var labelEl = document.createElement('label');
         labelEl.htmlFor= [i]+'id';
@@ -122,10 +123,12 @@ function renderAddOns(){
         liEl.appendChild(labelEl);
         //inputEl.onclick = clickIngredient;
     } 
+    console.log('why')
 }
 
 
-renderAddOns();
+renderAddOns('one');
+renderAddOns('two');
 
 //BUTTONS
 //Set global variables:
@@ -143,21 +146,35 @@ var formEl = document.getElementById ('form-one')
 formEl.addEventListener('submit', function(event){
     event.preventDefault();
     console.log(event.target.base_cookie_choice);
-    if (event.target.base_cookie_choice.value === 'chocolate_chip'){
-        console.log('chocolate_chip');
-        cookieTypeSelected = chocolateChipRecipe;
-        console.log(cookieTypeSelected);
+    function baseCookieChoice(){
+        if (event.target.base_cookie_choice.value === 'chocolate_chip'){
+            console.log('chocolate_chip');
+            cookieTypeSelected = chocolateChipRecipe;
+            console.log(cookieTypeSelected);
+        }
+        if (event.target.base_cookie_choice.value === 'sugar_cookie'){
+            console.log('sugar_cookie');
+            cookieTypeSelected = sugarCookieRecipe;
+            console.log(cookieTypeSelected);
+        }
+        if (event.target.base_cookie_choice.value === 'oatmeal_cookie'){
+            console.log('oatmeal_cookie');
+            cookieTypeSelected = oatmealCookieRecipe;
+            console.log(cookieTypeSelected);
+        }
     }
-    if (event.target.base_cookie_choice.value === 'sugar_cookie'){
-        console.log('sugar_cookie');
-        cookieTypeSelected = sugarCookieRecipe;
-        console.log(cookieTypeSelected);
+    function addOnCookieChoice(){
+        console.log(event.target.add_onsone.value)
+        console.log(event.target.add_onstwo.value)
+        for (var i = 0; i < extraCounter; i ++){
+            console.log(addOn[i]);
+            if (event.target.add_onsone.id === addOn[i].id){
+                console.log('yay');
+            }
+        }
     }
-    if (event.target.base_cookie_choice.value === 'oatmeal_cookie'){
-        console.log('oatmeal_cookie');
-        cookieTypeSelected = oatmealCookieRecipe;
-        console.log(cookieTypeSelected);
-    }
+    baseCookieChoice();
+    addOnCookieChoice();
     renderRecipe();
 })
 
@@ -166,7 +183,6 @@ formEl.addEventListener('submit', function(event){
 //RENDER
 
 function renderRecipe() {
-    console.log(baseRecipe);
     recipeElCheck = document.getElementById('recipe');
     if (recipeElCheck){
         recipeElCheck.remove();
