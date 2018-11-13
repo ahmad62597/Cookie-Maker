@@ -35,9 +35,11 @@ var oatmealCookieRecipe = {
 
 var ingredients =[];
 
+
 //var cookieType = [];
 var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
 var baseRecipe;
+
 
 //constructor for creating ingredients
 function Ingredient(name, id){
@@ -141,6 +143,7 @@ function resetSurvey() {
 }
 
 //Pay attention to this stuff
+
 
 
 

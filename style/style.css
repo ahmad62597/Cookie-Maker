@@ -1,7 +1,14 @@
+body {
+    background-color: rgba(207, 248, 248, 0.767)
+    
+}
+
+
 h1 {
     font-family: 'Roboto Slab', serif;
     font-size: 65px;
     text-align:center;
+    color: rgb(68, 25, 5)
 }
 
 img{height: 125px;
@@ -12,9 +19,6 @@ ul#tabs li {
     box-sizing: border-box;
     display:inline-block;
     list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    /* padding-right: 5px; */
     padding-left: 170px;
     line-height: 42px;
     overflow: hidden;
@@ -24,3 +28,23 @@ ul#tabs li {
 a{
     color: white;
 }
+
+
+#pick-cookie{
+    display:inline-block;
+    padding-top:20px;
+    padding-left:400px;
+    color: rgb(70, 33, 9)
+}
+
+#pick-cookie img {
+    position: absolute;
+    height: 275px;
+    width: 275px;
+    top: 260px;
+    left: 700px;
+    border-style: groove;
+    border-width: thick;
+    border-color: gray;
+}
+
