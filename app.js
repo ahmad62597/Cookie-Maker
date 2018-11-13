@@ -38,7 +38,7 @@ var ingredients =[];
 
 //var cookieType = [];
 var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
-var baseRecipe;
+var baseRecipe ={};
 
 
 //constructor for creating ingredients
@@ -57,6 +57,7 @@ function Ingredient(name, id){
 	
 //     cookieType.push(this);
 // }
+
 //funciton to make all cookie objects
 // function makeCookieType() {
 //     var chocolate_chip_cookie = new CookieType('chocolate_chip_cookie', 'chocolate_chip_cookie');
@@ -112,9 +113,9 @@ function renderCookieType(){
 
         inputEl.type = 'checkbox';
         inputEl.value = baseCookieRecipes[i].name;
-				inputEl.id = baseCookieRecipes[i].id;
-				//giving base cookies a data attribute
-				inputEl.dataset.baseCookie = baseCookieRecipes[i].id;
+        inputEl.id = baseCookieRecipes[i].id;
+        //giving base cookies a data attribute
+        inputEl.dataset.baseCookie = baseCookieRecipes[i].id;
 
         
         labelEl = document.createElement('label');
@@ -147,29 +148,26 @@ function resetSurvey() {
 //event listener to see if boxes get checked
 
 document.addEventListener('DOMContentLoaded', function(){
-    document.addEventListener('click', function(event){
-			var isChecked = event.target.checked;
-			if (event.target.dataset.baseCookie){
-				var baseCookie = event.target.checked;
-					checkIfTrueBaseCookieRecipe(baseCookie, isChecked);
-			}
-			else if(event.target.dataset.extras) {
-				console.log(event.target.dataset);
-				var addOn = event.target.dataset.extras;
-				checkIfTrueAddOns(addOn, isChecked);
-			}
-    })
+	document.addEventListener('click', function(event){
+    var isChecked = event.target.checked;
+    if (event.target.dataset.baseCookie){
+       var baseCookie = event.target.checked;
+      checkIfTrueBaseCookieRecipe(baseCookie, isChecked);
+    }
+    else if(event.target.dataset.extras) {
+			console.log(event.target.dataset);
+			var addOn = event.target.dataset.extras;
+			checkIfTrueAddOns(addOn, isChecked);
+    }
+  })
 })
 
 function checkIfTrueBaseCookieRecipe(baseCookie, isChecked){
-    for (var i = 0; i < baseCookieRecipes.length; i++ ){
-        var checkBox = document.getElementById([i]+'-cookie');
-        if(checkBox.checked === true){
-						baseRecipe = baseCookieRecipes[i];
-						//make baseRecipe show the directions
-            console.log('baseRecipe', baseRecipe);
-        }
-    }
+		if(isChecked){
+			baseRecipe = baseCookies;
+			//make baseRecipe show the directions
+			console.log('baseRecipe', baseRecipe);
+		}
 }
 checkIfTrueBaseCookieRecipe();
 
