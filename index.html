@@ -1,54 +1,57 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <link rel = "stylesheet" href = "style/reset.css">
-        <link rel = "stylesheet" href = "style/style.css">
-    </head>
-    <body>
-        <header>
-            <h1> Cookie Maker </h1>
-            <nav>
-                <ul>
-                    <li><a href = index.html>Home</a></li>
-                    <li><a href = favorite.html>Our Favorite Cookies</a></li>
-                    <li><a href = saved.html>Saved Cookies</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <div id = 'order-box'>
-                <form id =form-one>
-                    <p> Please choose a cookie base and two (2) cookie add ons</p>
-                    <div id = 'base-cookie'>
-                        <ul>
-                             <li>
-                                <input type="radio" id="0cookie" name="base_cookie_choice" value="chocolate_chip">
-                                <lable for="0cookie">Chocolate Chip</lable>
-                            </li>
-                            <li> 
-                                <input type="radio" id="1cookie" name="base_cookie_choice" value="oatmeal_cookie">
-                                <lable for="1cookie">Oatmeal Cookie</lable>
-                            </li>
-                            <li>
-                                <input type="radio" id="2cookie" name="base_cookie_choice" value="sugar_cookie">
-                                <lable for="2cookie">Sugar Cookie</lable>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id = 'add-ons'>
-                        
-                    </div>
-                    <div>
-                        <button type=submit id='get-cookie'> Get My Cookie! </button>
-                        <button id ="reset"> Reset!</button>
-                    </div>
-                </form>
-            </div>
-            <div id = 'recipe-box'>
-                <button id = "print-recipe">Print</button>
-            </div>
-        </main>
-        <foot></foot>
-        <script src="app.js"></script>
-    </body>
+
+<head>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+        <h1> Cookie Maker </h1>
+        <nav>
+            <ul>
+                <li><a href=index.html>Home</a></li>
+                <li><a href=favorite.html>Our Favorite Cookies</a></li>
+                <li><a href=saved.html>Saved Cookies</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id='order-box'>
+            <form id=form-one>
+                <p> Please choose a cookie base and two (2) cookie add ons</p>
+                <div id='base-cookie'>
+                    <ul>
+                        <li>
+                            <input type="radio" id="0cookie" name="base_cookie_choice" value="chocolate_chip">
+                            <lable for="0cookie">Chocolate Chip</lable>
+                        </li>
+                        <li>
+                            <input type="radio" id="1cookie" name="base_cookie_choice" value="oatmeal_cookie">
+                            <lable for="1cookie">Oatmeal Cookie</lable>
+                        </li>
+                        <li>
+                            <input type="radio" id="2cookie" name="base_cookie_choice" value="sugar_cookie">
+                            <lable for="2cookie">Sugar Cookie</lable>
+                        </li>
+                    </ul>
+                </div>
+                <div id='add-ons'>
+
+                </div>
+                <div>
+                    <button type=submit id='get-cookie'> Get My Cookie! </button>
+                    <button id="reset"> Reset!</button>
+                </div>
+            </form>
+        </div>
+        <div id='recipe-box'>
+            <button id="print-recipe">Print</button>
+        </div>
+    </main>
+    <foot></foot>
+    <script src="app.js"></script>
+</body>
+
 </html>
