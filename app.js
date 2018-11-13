@@ -132,9 +132,7 @@ function renderAddOns(){
 
         var labelEl = document.createElement('label');
         labelEl.htmlFor= [i]+'id';
-        labelEl.textContent = addOn[i].name;
-        
-        console.log(labelEl);   
+        labelEl.textContent = addOn[i].name;   
         listEl.appendChild(liEl);
         liEl.appendChild(inputEl);
         liEl.appendChild(labelEl);
@@ -193,8 +191,10 @@ function resetSurvey() {
 document.addEventListener('DOMContentLoaded', function(){
 	document.addEventListener('click', function(event){
     var isChecked = event.target.checked;
-    if (event.target.dataset.baseCookie){
-       var baseCookie = event.target.checked;
+    console.log('even in add event listener', event.target);
+    if (event.target.id){
+       var baseCookie = event.target.id;
+       console.log('base Cookie' , baseCookie)
       checkIfTrueBaseCookieRecipe(baseCookie, isChecked);
     }
     else if(event.target.dataset.extras) {
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function checkIfTrueBaseCookieRecipe(baseCookie, isChecked){
 		if(isChecked){
-			baseRecipe = baseCookies;
+			baseRecipe = baseCookie;
 			//make baseRecipe show the directions
 			console.log('baseRecipe', baseRecipe);
 		}
@@ -242,6 +242,7 @@ function renderRecipe() {
 
     function renderIngredientsList (){
         var ulEl = document.createElement('ul')
+        console.log('base recipe in render ingreidents' , baseRecipe);
         recipeEl.appendChild(ulEl);
         for (var i = 0; i < baseRecipe.ingredients.length; i++){
             var liEl = document.createElement('li');
