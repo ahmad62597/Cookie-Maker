@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta charset="utf-8">
-      <title>Cookie Maker</title>
-      <link rel="stylesheet" type="text/css" media="screen" href="style/reset.css">
-      <link rel="stylesheet" type="text/css" media="screen" href="style/style.css">
-      <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <title> Cookie Maker </title>
-  </head>
-  <body>
-   <header>
-       <h1>Make Your Own Cookie!</h1>
-       <img src="assets/Fixedbanner.png" alt="Banner Design">
-       <div id="actionbar" class role="navigation"></div>
 
-       <ul id="tabs">
-           <li>
-               <a href="httpe://example.com">Home</a>
-           </li>
-           <li>
-              <a href="httpe://example.com">Saved Cookies</a>
-           </li>
-           <li>
-              <a href="httpe://example.com">Favorite Cookies</a>
-           </li>
+<head>
+    <meta charset="utf-8">
+    <title>Cookie Maker</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
+    <title> Cookie Maker </title>
+</head>
+
+<body>
+    <header>
+        <h1>Make Your Own Cookie!</h1>
+        <img src="assets/Fixedbanner.png" alt="Banner Design">
+        <div id="actionbar" class role="navigation"></div>
+
+        <ul id="tabs">
+            <li>
+                <a href="httpe://example.com">Home</a>
+            </li>
+            <li>
+                <a href="httpe://example.com">Saved Cookies</a>
+            </li>
+            <li id='favorite'>
+                <a href="httpe://example.com">Favorite Cookies</a>
+            </li>
         </ul>
-       <p>
-          Instructions:
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-       </p>
-   </header>
+        <p>
+            Instructions:
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua
+        </p>
+    </header>
     <main id="main-content">
-            
-        <div id = pick-cookie>
-            <ul id="cookie-type"></ul>
-            <ul id="ingredients-list"></ul>
-            <img src="assets/Cookies.jpg" alt="Cookies">
-        </div>
-        <button id="reset" type="click">Restart</button>
-        <section id = "recipe"></section>
+        <div id="pick-cookie">
+            <div class="list">
+                <ul id="cookie-type"></ul>
+                <ul id="addon-list"></ul>
+            </div>
+            <div id=pick-cookie>
+                <ul id="cookie-type"></ul>
+                <ul id="ingredients-list"></ul>
+
+                <img src="assets/Cookies.jpg" alt="Cookies">
+
+            </div>
+            <button id="reset" type="click">Restart</button>
+            <div class="bootom-line">
+                <hr>
+            </div>
+            <section id="recipe-section"></section>
+            <div id="print-recipe">
+                <section id="recipe"></section>
+                <input type="button" onclick="printDiv('print-recipe')" value="Print the Recipe!" />
+            </div>
     </main>
     <footer>
     </footer>
     <script src="app.js"></script>
 </body>
+
 </html>

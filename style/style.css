@@ -1,5 +1,9 @@
+html{
+    margin: 0px 30px;
+}
 body {
-    background-color: rgba(207, 248, 248, 0.767)
+    background-color: white;
+    margin: auto;
     
 }
 
@@ -24,17 +28,26 @@ ul#tabs li {
     overflow: hidden;
     background-color: rgb(15, 82, 161);
     width: 33%;
+    border-radius: 10px;
 }
 a{
     color: white;
 }
 
-
 #pick-cookie{
     display:inline-block;
     padding-top:20px;
     padding-left:400px;
-    color: rgb(70, 33, 9)
+    color: rgb(70, 33, 9);
+    /* border-style: groove;
+    border-width: thick;
+    border-color: gray; */
+}
+
+#pick-cookie ul{border-style: groove;
+    border-width: thick;
+    border-color: gray;
+    margin-top:20px;
 }
 
 #pick-cookie img {
@@ -46,5 +59,16 @@ a{
     border-style: groove;
     border-width: thick;
     border-color: gray;
+    border-radius: 5px;
+    margin-top: 20px;
 }
-
+ 
+.bottom-line{
+    position: relative;
+    top:300px;
+}
+.list{
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
