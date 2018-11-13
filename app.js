@@ -81,21 +81,23 @@ var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRe
 
 
 //constructor for creating add ons. this constructor will be pushed into add on array
-function AddOn(name, id){
+function AddOn(name, id, addDirections, amount){
     this.name = name;
-		this.id = id;
+    this.id = id;
+    this.addDirections = addDirections;
+    this.amount = amount;
 		
     addOn.push(this);
 }
 
 function makeAddOns(){
-    var chocolate_chip = new AddOn('chocolate_chip', 'chocolate_chip');
-    var coconut = new AddOn('coconut', 'coconut');
-    var peanut_butter = new AddOn('peanut_butter', 'peanut_butter');
-    var cinnamon = new AddOn('cinnamon', 'cinnamon');
-    var sprinkles = new AddOn('sprinkles', 'sprinkles');
-    var frosting = new AddOn('frosting', 'frosting');
-    var nuts = new AddOn('nuts', 'nuts');
+    var chocolate_chip = new AddOn('chocolate_chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
+    var coconut = new AddOn('coconut', 'coconut', 'Mix in Coconut', '1 cup');
+    var peanut_butter = new AddOn('peanut_butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
+    var cinnamon = new AddOn('cinnamon', 'cinnamon', 'Mix in Cinnamon', '1 tsp');
+    var sprinkles = new AddOn('sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
+    var frosting = new AddOn('frosting', 'frosting', 'Once cool, add frosting', '1 can');
+    var nuts = new AddOn('nuts', 'nuts', 'Mix in Nuts', '1 cup');
 }
 
 //renders the add ons to the page
@@ -141,6 +143,8 @@ function resetSurvey() {
 }
 //event listener to see if boxes get checked
 var cookieTypeSelected;
+var firstAddOn;
+var secondAddOn;
 var submitEl = document.getElementById('get-cookie');
 var formEl = document.getElementById ('form-one')
 formEl.addEventListener('submit', function(event){
@@ -167,11 +171,24 @@ formEl.addEventListener('submit', function(event){
         console.log(event.target.add_onsone.value)
         console.log(event.target.add_onstwo.value)
         for (var i = 0; i < extraCounter; i ++){
-            console.log(addOn[i]);
-            if (event.target.add_onsone.id === addOn[i].id){
+            var itemNameOne = addOn[i].name + 'one'
+            console.log('itemNameOne', itemNameOne);
+            if (event.target.add_onsone.value === itemNameOne){
                 console.log('yay');
+                firstAddOn = addOn[i];
+                console.log(firstAddOn)
             }
         }
+        for (var j = 0; j < extraCounter; j ++){
+            var itemNameTwo = addOn[j].name + 'two'
+            console.log('itemNameTwo', itemNameTwo);
+            if (event.target.add_onstwo.value === itemNameTwo){
+                console.log('yay');
+                secondAddOn = addOn[j];
+                console.log(secondAddOn)
+            }
+        }
+
     }
     baseCookieChoice();
     addOnCookieChoice();
@@ -198,6 +215,87 @@ function renderRecipe() {
     titleEl.textContent = 'Your Recipe';
     recipeEl.id = 'recipe';
 
+    var recipe = cookieTypeSelected;
+    console.log('recipe', recipe)
+
+    function createRecipe(){
+        recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
+        recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
+        
+        if (recipe === chocolateChipRecipe){
+            if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
+                recipe.instructions.splice(5, 0, addOn[0].addDirections)
+            }
+            if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
+                recipe.instructions.splice(5, 0, addOn[1].addDirections)
+            }
+            if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
+                recipe.instructions.splice(3, 0, addOn[2].addDirections)  
+            }
+            if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
+                recipe.instructions.splice(4, 0, addOn[3].addDirections)
+            }
+            if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
+                recipe.instructions.splice(6, 0, addOn[4].addDirections)
+            }
+            if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+                recipe.instructions.push(addOn[5].addDirections)
+            }
+            if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
+                recipe.instructions.splice(5, 0, addOn[6].addDirections)
+                
+            }
+        }
+        if (recipe === oatmealCookieRecipe){
+            if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
+                recipe.instructions.splice(3, 0, addOn[0].addDirections)
+            }
+            if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
+                recipe.instructions.splice(3, 0, addOn[1].addDirections)
+            }
+            if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
+                recipe.instructions.splice(2, 0, addOn[2].addDirections)  
+            }
+            if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
+                recipe.instructions.splice(3, 0, addOn[3].addDirections)
+            }
+            if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
+                recipe.instructions.splice(6, 0, addOn[4].addDirections)
+            }
+            if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+                recipe.instructions.push(addOn[5].addDirections)
+            }
+            if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
+                recipe.instructions.splice(3, 0, addOn[6].addDirections)
+                
+            }
+        }
+        if (recipe === sugarCookieRecipe){
+            if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
+                recipe.instructions.splice(4, 0, addOn[0].addDirections)
+            }
+            if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
+                recipe.instructions.splice(4, 0, addOn[1].addDirections)
+            }
+            if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
+                recipe.instructions.splice(1, 0, addOn[2].addDirections)  
+            }
+            if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
+                recipe.instructions.splice(4, 0, addOn[3].addDirections)
+            }
+            if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
+                recipe.instructions.splice(6, 0, addOn[4].addDirections)
+            }
+            if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+                recipe.instructions.push(addOn[5].addDirections)
+            }
+            if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
+                recipe.instructions.splice(4, 0, addOn[6].addDirections)
+                
+            }
+        }
+    }
+    createRecipe();
     function renderIngredientsList (){
         var ulEl = document.createElement('ul')
         console.log('base recipe in render ingreidents' , cookieTypeSelected);
