@@ -1,4 +1,5 @@
-//Define base recipes that add ons will be pushed to. These are the recipes that render if no add ons are selected
+//Define base recipes that add ons will be pushed to. These are the recipes that render if no add ons are selected.
+// They are made up of a name, id, ingredients array and instructions array
 var chocolateChipRecipe = {
 	id: 'chocolate_chip',
 	name:'Chocolate Chip Cookie',
@@ -69,27 +70,19 @@ var oatmealCookieRecipe = {
     ],
 
 }
-//this is the array that will collect all of the add-ons
+//this is the array that will collect all of the add-ons made by the construtor function
 var addOn =[];
 
-//var cookieType = [];
-var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
-
-//sets default recipe to sugarCookie
-
-
-
-
-//constructor for creating add ons. this constructor will be pushed into add on array
+//constructor for creating add ons. this constructor will be pushed into add on array. It includes a name, and id, the instructions(addDIrections) and the amount
 function AddOn(name, id, addDirections, amount){
     this.name = name;
     this.id = id;
     this.addDirections = addDirections;
     this.amount = amount;
-		
+    //push objects into array
     addOn.push(this);
 }
-
+//this functions holds all the new add ons that go into the array
 function makeAddOns(){
     var chocolate_chip = new AddOn('chocolate_chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
     var coconut = new AddOn('coconut', 'coconut', 'Mix in Coconut', '1 cup');
@@ -100,23 +93,32 @@ function makeAddOns(){
     var nuts = new AddOn('nuts', 'nuts', 'Mix in Nuts', '1 cup');
 }
 
-//renders the add ons to the page
+//call makeAddOns function
 makeAddOns();
+//define the counter for the for loop when we append the add ons
 var extraCounter = addOn.length;
+
+
+//renders the add ons to the page. this function will be called twice, rendering addOn set One and addOn set Two
 function renderAddOns(addOnNumber){
+    //grabs the div element from the html
     var divEl = document.getElementById('add-ons');
+    //create an unordered list that will hold all of the add on
     var listEl = document.createElement('ul');
+    //anchor the list to the div
     divEl.appendChild(listEl);
+    //create a title for each of the two lists based on addOnNumber
     listEl.textContent = 'Add On '+ addOnNumber;
+    //create a for loop to populate list. we also create the type, value, id and name for each input element
     for(var i = 0; i < extraCounter; i++){
         var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
-        
+        //the list items hold the input, which is where we assign all our data for later
         inputEl.type = 'radio';
         inputEl.value = addOn[i].name+addOnNumber;
         inputEl.id = [i]+'id';
         inputEl.name = 'add_ons'+addOnNumber;
-
+        //the lable is linked to the input by the id, the lable holds the actual text content
         var labelEl = document.createElement('label');
         labelEl.htmlFor= [i]+'id';
         labelEl.textContent = addOn[i].name;   
@@ -125,7 +127,6 @@ function renderAddOns(addOnNumber){
         liEl.appendChild(labelEl);
         //inputEl.onclick = clickIngredient;
     } 
-    console.log('why')
 }
 
 
@@ -141,15 +142,20 @@ reset.addEventListener('click', resetSurvey);
 function resetSurvey() {
   location.reload();
 }
-//event listener to see if boxes get checked
+
+
+//define my variables for the event listener
 var cookieTypeSelected;
 var firstAddOn;
 var secondAddOn;
+//grab my submit and form elements from the html
 var submitEl = document.getElementById('get-cookie');
 var formEl = document.getElementById ('form-one')
+//create an advent listener for the entire form, using the submit button
 formEl.addEventListener('submit', function(event){
     event.preventDefault();
     console.log(event.target.base_cookie_choice);
+    //function that grabs our baseCookieChoice and assigns it to the cookieTypeSelected for later(when we render)
     function baseCookieChoice(){
         if (event.target.base_cookie_choice.value === 'chocolate_chip'){
             console.log('chocolate_chip');
@@ -167,11 +173,14 @@ formEl.addEventListener('submit', function(event){
             console.log(cookieTypeSelected);
         }
     }
+    //function that grabs the add ons.
+    //this is a hot mess, but it works
     function addOnCookieChoice(){
         console.log(event.target.add_onsone.value)
         console.log(event.target.add_onstwo.value)
+        //we specified extraCounter a long time ago when we rendered our add on lists
         for (var i = 0; i < extraCounter; i ++){
-            var itemNameOne = addOn[i].name + 'one'
+            var itemNameOne = addOn[i].name + 'one' //sets up itemNameOne so it will match with the selected item
             console.log('itemNameOne', itemNameOne);
             if (event.target.add_onsone.value === itemNameOne){
                 console.log('yay');
@@ -179,6 +188,7 @@ formEl.addEventListener('submit', function(event){
                 console.log(firstAddOn)
             }
         }
+        //same thing but for the second add on list
         for (var j = 0; j < extraCounter; j ++){
             var itemNameTwo = addOn[j].name + 'two'
             console.log('itemNameTwo', itemNameTwo);
@@ -190,6 +200,7 @@ formEl.addEventListener('submit', function(event){
         }
 
     }
+    //calls the awesome functions we just made
     baseCookieChoice();
     addOnCookieChoice();
     renderRecipe();
@@ -198,13 +209,14 @@ formEl.addEventListener('submit', function(event){
 
 
 //RENDER
-
+//YAY FUN STUFF
 function renderRecipe() {
+    //this section makes sure that the recipe re-renders on each submit
     recipeElCheck = document.getElementById('recipe');
     if (recipeElCheck){
         recipeElCheck.remove();
     }
-    //create parent elements4
+    //this section anchors us into the html and creates our div and header
     var recipeSection = document.getElementById('recipe-box');
     var recipeEl = document.createElement('div');
     var titleEl = document.createElement('h3');
@@ -214,38 +226,46 @@ function renderRecipe() {
     //add text content to title
     titleEl.textContent = 'Your Recipe';
     recipeEl.id = 'recipe';
-
+    //this section defines what recipe we are going to start with as our base recipe before add ons
     var recipe = cookieTypeSelected;
     console.log('recipe', recipe)
-
+    //this function will push or splice our addons information into our base recipe.
     function createRecipe(){
+        //this part adds the amount and name of each add on to the ingredient list
         recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
         recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
-        
+        //this splices the addDirections property from the add ons into the instructions array
+        //this one is for chocolate chip cookies
         if (recipe === chocolateChipRecipe){
+            //chocolate chips
             if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
                 recipe.instructions.splice(5, 0, addOn[0].addDirections)
             }
+            //coconut
             if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
                 recipe.instructions.splice(5, 0, addOn[1].addDirections)
             }
+            //peanut butter
             if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
                 recipe.instructions.splice(3, 0, addOn[2].addDirections)  
             }
+            //cinnamon
             if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
                 recipe.instructions.splice(4, 0, addOn[3].addDirections)
             }
+            //sprinkles
             if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
-            }
+            }//frosting (always goes last)
             if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
                 recipe.instructions.push(addOn[5].addDirections)
-            }
+            }//nutes
             if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
                 recipe.instructions.splice(5, 0, addOn[6].addDirections)
                 
             }
         }
+        //this one is for oatmeal cookies
         if (recipe === oatmealCookieRecipe){
             if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
                 recipe.instructions.splice(3, 0, addOn[0].addDirections)
@@ -270,6 +290,7 @@ function renderRecipe() {
                 
             }
         }
+        //this one is for sugar cookies
         if (recipe === sugarCookieRecipe){
             if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
                 recipe.instructions.splice(4, 0, addOn[0].addDirections)
@@ -295,7 +316,9 @@ function renderRecipe() {
             }
         }
     }
+    //this calls function
     createRecipe();
+    //this renders the ingreidnts list and links it into our recipe section
     function renderIngredientsList (){
         var ulEl = document.createElement('ul')
         console.log('base recipe in render ingreidents' , cookieTypeSelected);
@@ -306,7 +329,7 @@ function renderRecipe() {
             liEl.textContent=cookieTypeSelected.ingredients[i];
         } console.log('running')  
     }
-
+        // this will render and append our instructions to our recipe section
      function renderInstructions (){
          var olEl = document.createElement('ol')
          recipeEl.appendChild(olEl);
@@ -324,7 +347,7 @@ console.log('This code is running')
 }
 
 
-
+//this is a printing button I broke
 //This is for specifically printing the instructions from the recipe
 function printDiv(printDiv) {
 
