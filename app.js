@@ -5,7 +5,7 @@
 //test
 var ingredients =[];
 var cookieType = [];
-var baseRecipe;
+
 
 function Ingredient(name, id){
     this.name = name;
@@ -124,7 +124,7 @@ var oatmealCookieRecipe = {
     ingredients: [],
     instructions: [],
 }
-
+var baseRecipe = chocolateChipRecipe;
 var baseCookieRecipes = [chocolateChipRecipe, sugarCookieRecipe, oatmealCookieRecipe];
 document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('click', function(event){
@@ -155,65 +155,27 @@ function renderRecipe() {
     titleEl.textContent = 'Your Recipe';
 
     function renderIngredientsList (){
-        var ingredientsEl = document.createElement('ul');
-        recipeEl.appendChild(ingredientsEl);
-    }
-
-    function renderInstructions (){
-        var instructionsEl = document.createElement('ol');
-        recipeEl.appendChild(instructionsEl);
-
-        
-        var stepList = [];
-        function StepList (stepNumber, instructions){
-            this.stepNumber = stepNumber;
-            this.instructions = instructions;
-
-            stepList.push(this);
-        }
-
-        //ignore all these variables, they're place holders until daniel gives me some variables from the click-clicky
-
-        var sprinkles;
-        var sugar_cookies;
-        var oatmeal;
-
-        function populateStepList (){
-            new StepList ('One', 'Cream your butter and sugar until smoothe.');
-            new StepList ('Two', 'Beat eggs until barely mixed, then add to butter and sugar mixture. Beat well.');
-            new StepList ('Three','Add dry ingredients (flour, salt, baking soda) and mix');
-            if (sprinkles) {
-                new StepList ('Four' , 'add sprinkles')
-            };
-            if (sugar_cookies) {
-                new StepList ('Five','Chill cookies 1 hour, roll out to 1/2 to 1.4 inch, cut out and place on greased tray')
-            } else {
-                new StepList ('Five', 'Roll cookies into 1 inch balls and set on ungreased cookie tray')
-            };
-            if (sugar_cookies) {
-                new StepList ('Six','Bake at whatever temperate');
-            } else if (oatmeal) {
-                new StepList ('Six' , 'Bake at a different temperate');
-            } else {
-                new StepList ('Six', 'bake cookies!!')
-            }
-            new StepList ('Seven', 'enjoy your cookies');
-
-            console.log(stepList);
-        }
-        populateStepList();
-        console.log(stepList);
-
-        for (var i = 0; i < stepList.length; i++){
+        var ulEl = document.createElement('ul')
+        for (var i = 0; i < baseRecipe.ingredients.length; i++){
             var liEl = document.createElement('li');
-            liEl.textContent = stepList[i].instructions;
-            console.log(liEl);
-            instructionsEl.appendChild(liEl);
-        }
-
+            ulEl.appendChild(liEl);
+            liEl.textContent=baseRecipe.ingredients[i];
+        } console.log('running')  
     }
-renderInstructions();
+
+     function renderInstructions (){
+         var ulEl = document.createElement('ul')
+         for (var i =0; i < baseRecipe.ingredients.length; i++){
+             var liEl=document.createElement('li')
+             ulEl.appendChild(liEl);
+             liEl.textContent=baseRecipe.ingredients[i];
+         }
+
+     }
+   
 renderIngredientsList();
+renderInstructions();
+console.log('This code is running')
 }
 renderRecipe();
 
