@@ -1,9 +1,113 @@
+let W = window.innerWidth;
+let H = window.innerHeight;
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
+const maxConfettis = 12;
+const particles = [];
+
+const possibleColors = [
+    "DodgerBlue",
+    "OliveDrab",
+    "Gold",
+    "Pink",
+    "SlateBlue",
+    "LightBlue",
+    "Gold",
+    "Violet",
+    "PaleGreen",
+    "SteelBlue",
+    "SandyBrown",
+    "Chocolate",
+    "Crimson"
+];
+
+function randomFromTo(from, to) {
+    return Math.floor(Math.random() * (to - from + 1) + from);
+}
+
+function confettiParticle() {
+    this.x = Math.random() * W; // x
+    this.y = Math.random() * H - H; // y
+    this.r = randomFromTo(1, 33); // radius
+    this.d = Math.random() * maxConfettis + 11;
+    this.color =
+        possibleColors[Math.floor(Math.random() * possibleColors.length)];
+    this.tilt = Math.floor(Math.random() * 33) - 11;
+    this.tiltAngleIncremental = Math.random() * 0.07 + 0.05;
+    this.tiltAngle = 0;
+
+    this.draw = function () {
+        context.beginPath();
+        context.lineWidth = this.r / 2;
+        context.strokeStyle = this.color;
+        context.moveTo(this.x + this.tilt + this.r / 3, this.y);
+        context.lineTo(this.x + this.tilt, this.y + this.tilt + this.r / 5);
+        return context.stroke();
+    };
+}
+
+function Draw() {
+    const results = [];
+
+    // Magical recursive functional love
+    requestAnimationFrame(Draw);
+
+    context.clearRect(0, 0, W, window.innerHeight);
+
+    for (var i = 0; i < maxConfettis; i++) {
+        results.push(particles[i].draw());
+    }
+
+    let particle = {};
+    let remainingFlakes = 0;
+    for (var i = 0; i < maxConfettis; i++) {
+        particle = particles[i];
+
+        particle.tiltAngle += particle.tiltAngleIncremental;
+        particle.y += (Math.cos(particle.d) + 3 + particle.r / 2) / 2;
+        particle.tilt = Math.sin(particle.tiltAngle - i / 3) * 15;
+
+        if (particle.y <= H) remainingFlakes++;
+
+        // If a confetti has fluttered out of view,
+        // bring it back to above the viewport and let if re-fall.
+        if (particle.x > W + 30 || particle.x < -30 || particle.y > H) {
+            particle.x = Math.random() * W;
+            particle.y = -30;
+            particle.tilt = Math.floor(Math.random() * 10) - 20;
+        }
+    }
+
+    return results;
+}
+
+window.addEventListener(
+    "resize",
+    function () {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    },
+    false
+);
+
+// Push new confetti objects to `particles[]`
+for (var i = 0; i < maxConfettis; i++) {
+    particles.push(new confettiParticle());
+}
+
+// Initialize
+canvas.width = W;
+canvas.height = H;
+Draw();
+//confetti code ends
 //Define base recipes that add ons will be pushed to. These are the recipes that render if no add ons are selected.
 // They are made up of a name, id, ingredients array and instructions array
 var chocolateChipRecipe = {
-	id: 'chocolate_chip',
-	name:'Chocolate Chip Cookie',
-	ingredients: ['1 cup butter',
+    id: 'chocolate_chip',
+    name: 'Chocolate Chip Cookie',
+    ingredients: ['1 cup butter',
         '3/4 cups sugar',
         '3/4 cups brown sugar',
         '1 teaspoon vanilla',
@@ -12,7 +116,7 @@ var chocolateChipRecipe = {
         '1 tsp baking soda',
         '1 tsp salt',
         '2 cups chocolate chips',
-        ],
+    ],
     instructions: ['Preheat Oven to 375',
         'Cream butter and sugar together',
         'Beat in eggs and vanilla',
@@ -20,33 +124,33 @@ var chocolateChipRecipe = {
         'Mix in chocolate chips',
         'Drop balls into one inch balls into an ungreased cookie tray',
         'Bake 9 to 11 minutes, cool on a wire rack.'
-        ],
+    ],
 }
 var sugarCookieRecipe = {
-	id: 'sugar_cookie',
-	name: 'Sugar Cookie',
-	ingredients: ['1/2 cup Sugar',
+    id: 'sugar_cookie',
+    name: 'Sugar Cookie',
+    ingredients: ['1/2 cup Sugar',
         '1/2 cup Butter',
         '1 tsp Vanilla',
         '2 eggs',
         '2 1/2 cup Flour, sifted',
         '2 tsp double-acting baking powder',
         '1/2 tsp salt'
-        ],
+    ],
     instructions: ['Cream butter and sugar together.',
-        'Beat in eggs and vanilla', 
+        'Beat in eggs and vanilla',
         'Add and mix in dry ingredients',
         'Chill for 3-4 hours',
         'Preheat Oven to 350 degrees',
         'Roll cookies to a 1/4 - 1/2 thickness. Use a cookie cutter to shape cookies.',
         'Place cookies on greased cookie sheet.',
         'Bake 7 to 12 minutes. Cool on wire rack.'],
-	
+
 }
 
 var oatmealCookieRecipe = {
-	id: 'oatmeal_cookie',
-	name: 'Oatmeal Cookie',
+    id: 'oatmeal_cookie',
+    name: 'Oatmeal Cookie',
     ingredients: ['1/2 cup butter',
         '1/2 cup sugar',
         '1/2 cup brown sugar',
@@ -71,10 +175,10 @@ var oatmealCookieRecipe = {
 
 }
 //this is the array that will collect all of the add-ons made by the construtor function
-var addOn =[];
+var addOn = [];
 
 //constructor for creating add ons. this constructor will be pushed into add on array. It includes a name, and id, the instructions(addDIrections) and the amount
-function AddOn(name, id, addDirections, amount){
+function AddOn(name, id, addDirections, amount) {
     this.name = name;
     this.id = id;
     this.addDirections = addDirections;
@@ -83,7 +187,7 @@ function AddOn(name, id, addDirections, amount){
     addOn.push(this);
 }
 //this functions holds all the new add ons that go into the array
-function makeAddOns(){
+function makeAddOns() {
     var chocolate_chip = new AddOn('chocolate_chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
     var coconut = new AddOn('coconut', 'coconut', 'Mix in Coconut', '1 cup');
     var peanut_butter = new AddOn('peanut_butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
@@ -101,7 +205,7 @@ var extraCounter = addOn.length;
 
 
 //renders the add ons to the page. this function will be called twice, rendering addOn set One and addOn set Two
-function renderAddOns(addOnNumber){
+function renderAddOns(addOnNumber) {
     //grabs the div element from the html
     var divEl = document.getElementById('add-ons');
     //create an unordered list that will hold all of the add on
@@ -109,25 +213,25 @@ function renderAddOns(addOnNumber){
     //anchor the list to the div
     divEl.appendChild(listEl);
     //create a title for each of the two lists based on addOnNumber
-    listEl.textContent = 'Add On '+ addOnNumber;
+    listEl.textContent = 'Add On ' + addOnNumber;
     //create a for loop to populate list. we also create the type, value, id and name for each input element
-    for(var i = 0; i < extraCounter; i++){
+    for (var i = 0; i < extraCounter; i++) {
         var liEl = document.createElement('li');
         var inputEl = document.createElement('input');
         //the list items hold the input, which is where we assign all our data for later
         inputEl.type = 'radio';
-        inputEl.value = addOn[i].name+addOnNumber;
-        inputEl.id = [i]+'id';
-        inputEl.name = 'add_ons'+addOnNumber;
+        inputEl.value = addOn[i].name + addOnNumber;
+        inputEl.id = [i] + 'id';
+        inputEl.name = 'add_ons' + addOnNumber;
         //the lable is linked to the input by the id, the lable holds the actual text content
         var labelEl = document.createElement('label');
-        labelEl.htmlFor= [i]+'id';
-        labelEl.textContent = addOn[i].name;   
+        labelEl.htmlFor = [i] + 'id';
+        labelEl.textContent = addOn[i].name;
         listEl.appendChild(liEl);
         liEl.appendChild(inputEl);
         liEl.appendChild(labelEl);
         //inputEl.onclick = clickIngredient;
-    } 
+    }
 }
 
 
@@ -141,7 +245,7 @@ var reset = document.getElementById('reset');
 reset.addEventListener('click', resetSurvey);
 //Call the function after you click the reset button:
 function resetSurvey() {
-  location.reload();
+    location.reload();
 }
 
 
@@ -151,24 +255,24 @@ var firstAddOn;
 var secondAddOn;
 //grab my submit and form elements from the html
 var submitEl = document.getElementById('get-cookie');
-var formEl = document.getElementById ('form-one')
+var formEl = document.getElementById('form-one')
 //create an advent listener for the entire form, using the submit button
-formEl.addEventListener('submit', function(event){
+formEl.addEventListener('submit', function (event) {
     event.preventDefault();
     console.log(event.target.base_cookie_choice);
     //function that grabs our baseCookieChoice and assigns it to the cookieTypeSelected for later(when we render)
-    function baseCookieChoice(){
-        if (event.target.base_cookie_choice.value === 'chocolate_chip'){
+    function baseCookieChoice() {
+        if (event.target.base_cookie_choice.value === 'chocolate_chip') {
             console.log('chocolate_chip');
             cookieTypeSelected = chocolateChipRecipe;
             console.log(cookieTypeSelected);
         }
-        if (event.target.base_cookie_choice.value === 'sugar_cookie'){
+        if (event.target.base_cookie_choice.value === 'sugar_cookie') {
             console.log('sugar_cookie');
             cookieTypeSelected = sugarCookieRecipe;
             console.log(cookieTypeSelected);
         }
-        if (event.target.base_cookie_choice.value === 'oatmeal_cookie'){
+        if (event.target.base_cookie_choice.value === 'oatmeal_cookie') {
             console.log('oatmeal_cookie');
             cookieTypeSelected = oatmealCookieRecipe;
             console.log(cookieTypeSelected);
@@ -176,24 +280,24 @@ formEl.addEventListener('submit', function(event){
     }
     //function that grabs the add ons.
     //this is a hot mess, but it works
-    function addOnCookieChoice(){
+    function addOnCookieChoice() {
         console.log(event.target.add_onsone.value)
         console.log(event.target.add_onstwo.value)
         //we specified extraCounter a long time ago when we rendered our add on lists
-        for (var i = 0; i < extraCounter; i ++){
+        for (var i = 0; i < extraCounter; i++) {
             var itemNameOne = addOn[i].name + 'one' //sets up itemNameOne so it will match with the selected item
             console.log('itemNameOne', itemNameOne);
-            if (event.target.add_onsone.value === itemNameOne){
+            if (event.target.add_onsone.value === itemNameOne) {
                 console.log('yay');
                 firstAddOn = addOn[i];
                 console.log(firstAddOn)
             }
         }
         //same thing but for the second add on list
-        for (var j = 0; j < extraCounter; j ++){
+        for (var j = 0; j < extraCounter; j++) {
             var itemNameTwo = addOn[j].name + 'two'
             console.log('itemNameTwo', itemNameTwo);
-            if (event.target.add_onstwo.value === itemNameTwo){
+            if (event.target.add_onstwo.value === itemNameTwo) {
                 console.log('yay');
                 secondAddOn = addOn[j];
                 console.log(secondAddOn)
@@ -212,7 +316,7 @@ formEl.addEventListener('submit', function(event){
 //RENDER
 //YAY FUN STUFF
 function renderRecipe() {
-    if(localStorage.getItem('recipes')){
+    if (localStorage.getItem('recipes')) {
         var recipeJSON = localStorage.getItem('recipes', recipeJSON);
         var recipeHistory = JSON.parse(recipeJSON);
         console.log(recipeHistory);
@@ -222,7 +326,7 @@ function renderRecipe() {
     }
     //this section makes sure that the recipe re-renders on each submit
     recipeElCheck = document.getElementById('recipe');
-    if (recipeElCheck){
+    if (recipeElCheck) {
         recipeElCheck.remove();
     }
     //this section anchors us into the html and creates our div and header
@@ -239,7 +343,7 @@ function renderRecipe() {
     var recipe = cookieTypeSelected;
     console.log('recipe', recipe)
     //this function will push or splice our addons information into our base recipe.
-    function createRecipe(){
+    function createRecipe() {
         //this part adds the amount and name of each add on to the ingredient list
         recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
         recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
@@ -247,119 +351,119 @@ function renderRecipe() {
         //this one is for chocolate chip cookies
         //TODO: add logic for new add-ins
         //TODO: improve logic for amounts based on cookie selections
-        if (recipe === chocolateChipRecipe){
+        if (recipe === chocolateChipRecipe) {
             //chocolate chips
-            if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
+            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
                 recipe.instructions.splice(5, 0, addOn[0].addDirections)
             }
             //coconut
-            if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
+            if (firstAddOn === addOn[1] || secondAddOn === addOn[1]) {
                 recipe.instructions.splice(5, 0, addOn[1].addDirections)
             }
             //peanut butter
-            if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
-                recipe.instructions.splice(3, 0, addOn[2].addDirections)  
+            if (firstAddOn === addOn[2] || secondAddOn === addOn[2]) {
+                recipe.instructions.splice(3, 0, addOn[2].addDirections)
             }
             //cinnamon
-            if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
+            if (firstAddOn === addOn[3] || secondAddOn === addOn[3]) {
                 recipe.instructions.splice(4, 0, addOn[3].addDirections)
             }
             //sprinkles
-            if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
+            if (firstAddOn === addOn[4] || secondAddOn === addOn[4]) {
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
             }//frosting (always goes last)
-            if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+            if (firstAddOn === addOn[5] || secondAddOn === addOn[5]) {
                 recipe.instructions.push(addOn[5].addDirections)
             }//nutes
-            if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
+            if (firstAddOn === addOn[6] || secondAddOn === addOn[6]) {
                 recipe.instructions.splice(5, 0, addOn[6].addDirections)
-                
+
             }
         }
         //this one is for oatmeal cookies
-        if (recipe === oatmealCookieRecipe){
-            if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
+        if (recipe === oatmealCookieRecipe) {
+            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
                 recipe.instructions.splice(3, 0, addOn[0].addDirections)
             }
-            if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
+            if (firstAddOn === addOn[1] || secondAddOn === addOn[1]) {
                 recipe.instructions.splice(3, 0, addOn[1].addDirections)
             }
-            if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
-                recipe.instructions.splice(2, 0, addOn[2].addDirections)  
+            if (firstAddOn === addOn[2] || secondAddOn === addOn[2]) {
+                recipe.instructions.splice(2, 0, addOn[2].addDirections)
             }
-            if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
+            if (firstAddOn === addOn[3] || secondAddOn === addOn[3]) {
                 recipe.instructions.splice(3, 0, addOn[3].addDirections)
             }
-            if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
+            if (firstAddOn === addOn[4] || secondAddOn === addOn[4]) {
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
             }
-            if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+            if (firstAddOn === addOn[5] || secondAddOn === addOn[5]) {
                 recipe.instructions.push(addOn[5].addDirections)
             }
-            if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
+            if (firstAddOn === addOn[6] || secondAddOn === addOn[6]) {
                 recipe.instructions.splice(3, 0, addOn[6].addDirections)
-                
+
             }
         }
         //this one is for sugar cookies
-        if (recipe === sugarCookieRecipe){
-            if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
+        if (recipe === sugarCookieRecipe) {
+            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
                 recipe.instructions.splice(4, 0, addOn[0].addDirections)
             }
-            if (firstAddOn === addOn[1]||secondAddOn === addOn[1]){
+            if (firstAddOn === addOn[1] || secondAddOn === addOn[1]) {
                 recipe.instructions.splice(4, 0, addOn[1].addDirections)
             }
-            if (firstAddOn === addOn[2]||secondAddOn === addOn[2]){
-                recipe.instructions.splice(1, 0, addOn[2].addDirections)  
+            if (firstAddOn === addOn[2] || secondAddOn === addOn[2]) {
+                recipe.instructions.splice(1, 0, addOn[2].addDirections)
             }
-            if (firstAddOn === addOn[3]||secondAddOn === addOn[3]){
+            if (firstAddOn === addOn[3] || secondAddOn === addOn[3]) {
                 recipe.instructions.splice(4, 0, addOn[3].addDirections)
             }
-            if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
+            if (firstAddOn === addOn[4] || secondAddOn === addOn[4]) {
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
             }
-            if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+            if (firstAddOn === addOn[5] || secondAddOn === addOn[5]) {
                 recipe.instructions.push(addOn[5].addDirections)
             }
-            if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
+            if (firstAddOn === addOn[6] || secondAddOn === addOn[6]) {
                 recipe.instructions.splice(4, 0, addOn[6].addDirections)
-                
+
             }
         }
     }
     //this calls function
     createRecipe();
     //this renders the ingreidnts list and links it into our recipe section
-    function renderIngredientsList (){
+    function renderIngredientsList() {
         var ulEl = document.createElement('ul')
-        console.log('base recipe in render ingreidents' , cookieTypeSelected);
+        console.log('base recipe in render ingreidents', cookieTypeSelected);
         recipeEl.appendChild(ulEl);
-        for (var i = 0; i < cookieTypeSelected.ingredients.length; i++){
+        for (var i = 0; i < cookieTypeSelected.ingredients.length; i++) {
             var liEl = document.createElement('li');
             ulEl.appendChild(liEl);
-            liEl.textContent=cookieTypeSelected.ingredients[i];
-        } console.log('running')  
+            liEl.textContent = cookieTypeSelected.ingredients[i];
+        } console.log('running')
     }
-        // this will render and append our instructions to our recipe section
-     function renderInstructions (){
-         var olEl = document.createElement('ol')
-         recipeEl.appendChild(olEl);
-         for (var i =0; i < cookieTypeSelected.instructions.length; i++){
-             var liEl=document.createElement('li')
-             olEl.appendChild(liEl);
-             liEl.textContent=cookieTypeSelected.instructions[i];
-         }
+    // this will render and append our instructions to our recipe section
+    function renderInstructions() {
+        var olEl = document.createElement('ol')
+        recipeEl.appendChild(olEl);
+        for (var i = 0; i < cookieTypeSelected.instructions.length; i++) {
+            var liEl = document.createElement('li')
+            olEl.appendChild(liEl);
+            liEl.textContent = cookieTypeSelected.instructions[i];
+        }
 
-     }
-   
-renderIngredientsList();
-renderInstructions();
-console.log('This code is running')
+    }
+
+    renderIngredientsList();
+    renderInstructions();
+    console.log('This code is running')
 
 
-recipeHistory.push(recipe);
-var recipeJSON = JSON.stringify(recipeHistory);
-localStorage.setItem('recipes', recipeJSON);
+    recipeHistory.push(recipe);
+    var recipeJSON = JSON.stringify(recipeHistory);
+    localStorage.setItem('recipes', recipeJSON);
 
 }
 
@@ -369,8 +473,8 @@ localStorage.setItem('recipes', recipeJSON);
 function printDiv(printDiv) {
 
     var printContents = document.getElementById('recipe-box').innerHTML;
-    var w=window.open();
+    var w = window.open();
     w.document.write(printContents);
     w.print();
     w.close();
-   }
+}
