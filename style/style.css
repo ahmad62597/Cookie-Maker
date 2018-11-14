@@ -34,6 +34,35 @@ a{
     color: white;
 }
 
+#topping-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#selected-add-ons {
+    width: 300px;
+    border: 2px dashed black;
+    height: 500px;
+}
+
+#pantry {
+    display: flex;
+    flex-direction: column;
+    border: 2px dashed black;
+    width: 300px;
+    position: relative;
+    height: 500px;
+}
+
+#pantry li, #selected-add-ons li {
+    border: 2px solid black;
+    padding: 0.5em;
+}
+
+#pantry li {
+    margin: 1em;
+}
+
 #pick-cookie{
     display:inline-block;
     padding-top:20px;
