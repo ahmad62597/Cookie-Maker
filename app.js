@@ -373,4 +373,15 @@ function printDiv(printDiv) {
     w.document.write(printContents);
     w.print();
     w.close();
-   }
+}
+
+
+
+
+//animations
+function draw(){
+    var canvas = document.getElementById('my-chart');
+    var ctx = canvas.getContext('2d');
+
+}
+draw();
