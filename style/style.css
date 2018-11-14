@@ -91,7 +91,7 @@ a{
     border-radius: 50%;
     width: 200px;
     height: 200px;
-
+    z-index: 0;
 
 }
 
@@ -106,30 +106,23 @@ a{
 #cookie1 .oatmeal{
 
 }
-
-#topping1 {
-    border-radius: 50%;
-    height: 190px;
-    width: 190px;
-    margin: 5px;
-    background-color: blue;
-    position: absolute;
-}
-
-#topping2 {
+#img-topping1 {
     border-radius: 50%;
     height: 180px;
     width: 180px;
     margin: 10px;
-    background-color: yellow;
+    top:0px;
     position: absolute;
-
+    z-index: 1;
+}
+#img-topping2 {
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 1;
 }
 
-#topping1 .none {
-    background-color: transparent;
-}
-
-#topping2 .none {
-    background-color: transparent;
-}

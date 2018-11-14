@@ -251,6 +251,8 @@ function renderRecipe() {
     console.log('recipe', recipe)
     //this function will push or splice our addons information into our base recipe.
     function createRecipe(){
+        var toppingImg1 = document.getElementById('img-topping1');
+        var toppingImg2 = document.getElementById('img-topping2');
         //this part adds the amount and name of each add on to the ingredient list
         recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
         recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
@@ -278,8 +280,10 @@ function renderRecipe() {
             //sprinkles
             if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
+                toppingImg1.src = './assets/sprinkles.jpg'
             }//frosting (always goes last)
             if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
+                toppingImg2.src = './assets/frosting.jpg'
                 recipe.instructions.push(addOn[5].addDirections)
             }//nutes
             if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
@@ -303,9 +307,11 @@ function renderRecipe() {
             }
             if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
+                toppingImg1.src = './assets/sprinkles.jpg'
             }
             if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
                 recipe.instructions.push(addOn[5].addDirections)
+                toppingImg2.src = './assets/frosting.jpg'
             }
             if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
                 recipe.instructions.splice(3, 0, addOn[6].addDirections)
@@ -328,9 +334,11 @@ function renderRecipe() {
             }
             if (firstAddOn === addOn[4]||secondAddOn === addOn[4]){
                 recipe.instructions.splice(6, 0, addOn[4].addDirections)
+                toppingImg1.src = './assets/sprinkles.jpg'
             }
             if (firstAddOn === addOn[5]||secondAddOn === addOn[5]){
                 recipe.instructions.push(addOn[5].addDirections)
+                toppingImg2.src = './assets/frosting.jpg'
             }
             if (firstAddOn === addOn[6]||secondAddOn === addOn[6]){
                 recipe.instructions.splice(4, 0, addOn[6].addDirections)
