@@ -379,9 +379,18 @@ function printDiv(printDiv) {
 
 
 //animations
-function draw(){
+
+    //create and anchor canvas
     var canvas = document.getElementById('my-chart');
     var ctx = canvas.getContext('2d');
 
-}
-draw();
+    //create the background cookie that everything builds off of
+    var firstCookie =  ctx.ellipse(100, 100, 100, 100, 0, 0, 2 * Math.PI, true);
+    ctx.fillStyle = 'blue';   
+    ctx.fill();
+    firstCookie;
+
+    
+    
+
+
