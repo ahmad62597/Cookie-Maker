@@ -91,6 +91,7 @@ function makeAddOns(){
     var sprinkles = new AddOn('sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
     var frosting = new AddOn('frosting', 'frosting', 'Once cool, add frosting', '1 can');
     var nuts = new AddOn('nuts', 'nuts', 'Mix in Nuts', '1 cup');
+    //TODO: add more options
 }
 
 //call makeAddOns function
@@ -236,6 +237,8 @@ function renderRecipe() {
         recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
         //this splices the addDirections property from the add ons into the instructions array
         //this one is for chocolate chip cookies
+        //TODO: add logic for new add-ins
+        //TODO: improve logic for amounts based on cookie selections
         if (recipe === chocolateChipRecipe){
             //chocolate chips
             if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
@@ -347,7 +350,6 @@ console.log('This code is running')
 }
 
 
-//this is a printing button I broke
 //This is for specifically printing the instructions from the recipe
 
 function printDiv(printDiv) {
