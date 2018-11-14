@@ -212,6 +212,14 @@ formEl.addEventListener('submit', function(event){
 //RENDER
 //YAY FUN STUFF
 function renderRecipe() {
+    if(localStorage.getItem('recipes')){
+        var recipeJSON = localStorage.getItem('recipes', recipeJSON);
+        var recipeHistory = JSON.parse(recipeJSON);
+        console.log(recipeHistory);
+    }
+    else {
+        recipeHistory = [];
+    }
     //this section makes sure that the recipe re-renders on each submit
     recipeElCheck = document.getElementById('recipe');
     if (recipeElCheck){
@@ -347,6 +355,12 @@ function renderRecipe() {
 renderIngredientsList();
 renderInstructions();
 console.log('This code is running')
+
+
+recipeHistory.push(recipe);
+var recipeJSON = JSON.stringify(recipeHistory);
+localStorage.setItem('recipes', recipeJSON);
+
 }
 
 
