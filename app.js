@@ -91,6 +91,7 @@ function makeAddOns(){
     var sprinkles = new AddOn('sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
     var frosting = new AddOn('frosting', 'frosting', 'Once cool, add frosting', '1 can');
     var nuts = new AddOn('nuts', 'nuts', 'Mix in Nuts', '1 cup');
+    //TODO: add more options
 }
 
 //call makeAddOns function
@@ -211,6 +212,14 @@ formEl.addEventListener('submit', function(event){
 //RENDER
 //YAY FUN STUFF
 function renderRecipe() {
+    if(localStorage.getItem('recipes')){
+        var recipeJSON = localStorage.getItem('recipes', recipeJSON);
+        var recipeHistory = JSON.parse(recipeJSON);
+        console.log(recipeHistory);
+    }
+    else {
+        recipeHistory = [];
+    }
     //this section makes sure that the recipe re-renders on each submit
     recipeElCheck = document.getElementById('recipe');
     if (recipeElCheck){
@@ -236,6 +245,8 @@ function renderRecipe() {
         recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
         //this splices the addDirections property from the add ons into the instructions array
         //this one is for chocolate chip cookies
+        //TODO: add logic for new add-ins
+        //TODO: improve logic for amounts based on cookie selections
         if (recipe === chocolateChipRecipe){
             //chocolate chips
             if (firstAddOn === addOn[0] ||secondAddOn === addOn[0]){
@@ -344,15 +355,21 @@ function renderRecipe() {
 renderIngredientsList();
 renderInstructions();
 console.log('This code is running')
+
+
+recipeHistory.push(recipe);
+var recipeJSON = JSON.stringify(recipeHistory);
+localStorage.setItem('recipes', recipeJSON);
+
 }
 
 
-//this is a printing button I broke
 //This is for specifically printing the instructions from the recipe
+
 function printDiv(printDiv) {
 
-    var printContents = document.getElementById("print-recipe").innerHTML;
-    w=window.open();
+    var printContents = document.getElementById('recipe-box').innerHTML;
+    var w=window.open();
     w.document.write(printContents);
     w.print();
     w.close();
