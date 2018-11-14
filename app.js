@@ -349,10 +349,11 @@ console.log('This code is running')
 
 //this is a printing button I broke
 //This is for specifically printing the instructions from the recipe
+
 function printDiv(printDiv) {
 
-    var printContents = document.getElementById("print-recipe").innerHTML;
-    w=window.open();
+    var printContents = document.getElementById('recipe-box').innerHTML;
+    var w=window.open();
     w.document.write(printContents);
     w.print();
     w.close();
