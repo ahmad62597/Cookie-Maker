@@ -16,5 +16,6 @@
 
 
 ##Stretch Goals
+- As a user, I want to implement drag and drop functionality to the recipe add-ons.
 - As a user, I want to be able to see the cookie before it's made (watch animations based on my choices).
 - As a user, I want to be able to save my favorite new cookie recipes.
