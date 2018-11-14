@@ -44,11 +44,13 @@ a{
     border-color: gray; */
 }
 
-#pick-cookie ul{border-style: groove;
+#order-box {border-style: groove;
     border-width: thick;
     border-color: gray;
     margin-top:20px;
 }
+
+
 
 #pick-cookie img {
     position: absolute;
