@@ -74,3 +74,62 @@ a{
     border-radius: 15px;
     padding: 10px;
 }
+
+
+/* ANIMATION */
+#cookie1 {
+    background-color: tan;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    position: relative;
+} 
+
+#cookieImg {
+    position: absolute;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+
+
+}
+
+#cookie1 .chocolate {
+    
+}
+
+#cookie1 .sugar {
+
+}
+
+#cookie1 .oatmeal{
+
+}
+
+#topping1 {
+    border-radius: 50%;
+    height: 190px;
+    width: 190px;
+    margin: 5px;
+    background-color: blue;
+    position: absolute;
+}
+
+#topping2 {
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+    margin: 10px;
+    background-color: yellow;
+    position: absolute;
+
+}
+
+#topping1 .none {
+    background-color: transparent;
+}
+
+#topping2 .none {
+    background-color: transparent;
+}

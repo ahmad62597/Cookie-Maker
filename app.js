@@ -157,21 +157,32 @@ formEl.addEventListener('submit', function(event){
     event.preventDefault();
     console.log(event.target.base_cookie_choice);
     //function that grabs our baseCookieChoice and assigns it to the cookieTypeSelected for later(when we render)
+    //get elements
+    var cookieBackground = document.getElementById('cookie1')
+    var cookieImg = document.getElementById('cookieImg');
     function baseCookieChoice(){
         if (event.target.base_cookie_choice.value === 'chocolate_chip'){
             console.log('chocolate_chip');
             cookieTypeSelected = chocolateChipRecipe;
             console.log(cookieTypeSelected);
+            cookieBackground.className = 'chocolate'
+            cookieImg.src = './assets/chocolate_chip.jpg'
+
         }
         if (event.target.base_cookie_choice.value === 'sugar_cookie'){
             console.log('sugar_cookie');
             cookieTypeSelected = sugarCookieRecipe;
             console.log(cookieTypeSelected);
+            cookieBackground.className = 'sugar'
+            cookieImg.src = './assets/sugar_cookie.jpg'
         }
         if (event.target.base_cookie_choice.value === 'oatmeal_cookie'){
             console.log('oatmeal_cookie');
             cookieTypeSelected = oatmealCookieRecipe;
             console.log(cookieTypeSelected);
+            cookieBackground.className = 'oatmeal'
+            cookieImg.src = './assets/oatmeal.jpg'
+
         }
     }
     //function that grabs the add ons.
@@ -375,22 +386,5 @@ function printDiv(printDiv) {
     w.close();
 }
 
-
-
-
-//animations
-
-    //create and anchor canvas
-    var canvas = document.getElementById('my-chart');
-    var ctx = canvas.getContext('2d');
-
-    //create the background cookie that everything builds off of
-    var firstCookie =  ctx.ellipse(100, 100, 100, 100, 0, 0, 2 * Math.PI, true);
-    ctx.fillStyle = 'blue';   
-    ctx.fill();
-    firstCookie;
-
-    
-    
 
 
