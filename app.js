@@ -7,7 +7,7 @@ var chocolateChipRecipe = {
     ingredients: ['1 cup butter',
         '3/4 cups sugar',
         '3/4 cups brown sugar',
-        '1 teaspoon vanilla',
+        '1 tsp vanilla',
         '2 large eggs',
         '2 1/4 cups flour',
         '1 tsp baking soda',
