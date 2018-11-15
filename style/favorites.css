@@ -10,6 +10,7 @@ main {
     position: relative;
     margin-top: 20px;
     font-size: 20px;
+    height: 500px;
 }
 .fav-recipe {
     padding: 20px;
