@@ -91,6 +91,7 @@ function makeAddOns(){
     var sprinkles = new AddOn('Sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
     var frosting = new AddOn('Frosting', 'frosting', 'Once cool, add frosting', '1 can');
     var nuts = new AddOn('Nuts', 'nuts', 'Mix in Nuts', '1 cup');
+    var none = new AddOn ('I only want one add on', null, null, null)
 
     //TODO: add more options
 
