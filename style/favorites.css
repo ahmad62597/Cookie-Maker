@@ -1,5 +1,5 @@
 main h3 {
-    font-size: 24px;
+    font-size: 28px;
 }
 main p {
     font-weight: bold;
@@ -9,6 +9,7 @@ main p {
 main {
     position: relative;
     margin-top: 20px;
+    font-size: 20px;
 }
 .fav-recipe {
     padding: 20px;
