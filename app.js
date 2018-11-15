@@ -1,3 +1,4 @@
+'use-strict';
 //Define base recipes that add ons will be pushed to. These are the recipes that render if no add ons are selected.
 // They are made up of a name, id, ingredients array and instructions array
 var chocolateChipRecipe = {
@@ -308,13 +309,26 @@ function renderRecipe() {
             liEl.textContent = cookieTypeSelected.instructions[i];
         }
     }
-
-    renderIngredientsList();
-    renderInstructions();
-    console.log('This code is running')
-    recipeHistory.push(recipe);
-    var recipeJSON = JSON.stringify(recipeHistory);
-    localStorage.setItem('recipes', recipeJSON);
+        // this will render and append our instructions to our recipe section
+    function renderInstructions (){
+         var olEl = document.createElement('ol')
+         recipeEl.appendChild(olEl);
+         for (var i =0; i < cookieTypeSelected.instructions.length; i++){
+             var liEl=document.createElement('li')
+             olEl.appendChild(liEl);
+             liEl.textContent=cookieTypeSelected.instructions[i];
+         }
+    }
+   
+renderIngredientsList();
+renderInstructions();
+console.log('This code is running')
+document.getElementById('saveCookie').addEventListener('click', saveCookie);
+    function saveCookie(){
+        recipeHistory.push(recipe);
+        var recipeJSON = JSON.stringify(recipeHistory);
+        localStorage.setItem('recipes', recipeJSON);
+    }    
 }
 //This is for specifically printing the instructions from the recipe
 function printDiv(printDiv) {
@@ -345,3 +359,4 @@ function addOnCookieChoice() {
     firstAddOn = toppingsCounter[0];
     secondAddOn = toppingsCounter[1];
 }
+

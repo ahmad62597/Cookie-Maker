@@ -1,25 +1,18 @@
 html{
-    margin: 0px;
+    color: #A7620E;
+    font-family: 'Amatic SC', cursive;
+    margin: 5px 25px;
 }
 body {
     background-image: url('../assets/confetti.gif');
     margin: 10px; 
+    color: #A7620E;
+    font-family: 'Amatic SC', cursive;
 }
-/* h1 {
-    position: absolute;
-    margin-top: 30vh;
-    width: 100%;
-    text-align: center;
-    font-size: 333%;
-    font-family: sans-serif;
-    color: grey;
-    opacity: 0.8;
-} */
+
 h1 {
-    font-family: 'Roboto Slab', serif;
     font-size: 65px;
     text-align:center;
-    color: rgb(68, 25, 5) 
 }
 
 img{height: 125px;
@@ -45,9 +38,7 @@ a{
     padding-top:20px;
     padding-left:400px;
     color: rgb(70, 33, 9);
-    /* border-style: groove;
-    border-width: thick;
-    border-color: gray; */
+
 }
 
 #order-box {border-style: groove;
