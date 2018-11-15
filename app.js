@@ -84,13 +84,13 @@ function AddOn(name, id, addDirections, amount){
 }
 //this functions holds all the new add ons that go into the array
 function makeAddOns(){
-    var chocolate_chip = new AddOn('chocolate_chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
-    var coconut = new AddOn('coconut', 'coconut', 'Mix in Coconut', '1 cup');
-    var peanut_butter = new AddOn('peanut_butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
-    var cinnamon = new AddOn('cinnamon', 'cinnamon', 'Mix in Cinnamon', '1 tsp');
-    var sprinkles = new AddOn('sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
-    var frosting = new AddOn('frosting', 'frosting', 'Once cool, add frosting', '1 can');
-    var nuts = new AddOn('nuts', 'nuts', 'Mix in Nuts', '1 cup');
+    var chocolate_chip = new AddOn('Chocolate Chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
+    var coconut = new AddOn('Coconut', 'Coconut', 'Mix in Coconut', '1 cup');
+    var peanut_butter = new AddOn('Peanut Butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
+    var cinnamon = new AddOn('Cinnamon', 'cinnamon', 'Mix in Cinnamon', '1 tsp');
+    var sprinkles = new AddOn('Sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
+    var frosting = new AddOn('Frosting', 'frosting', 'Once cool, add frosting', '1 can');
+    var nuts = new AddOn('Nuts', 'nuts', 'Mix in Nuts', '1 cup');
 }
 
 //call makeAddOns function
@@ -351,7 +351,7 @@ console.log('This code is running')
 //This is for specifically printing the instructions from the recipe
 function printDiv(printDiv) {
 
-    var printContents = document.getElementById("print-recipe").innerHTML;
+    var printContents = document.getElementById('recipe-box').innerHTML;
     w=window.open();
     w.document.write(printContents);
     w.print();
