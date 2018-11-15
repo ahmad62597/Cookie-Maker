@@ -1,0 +1,35 @@
+main h3 {
+    font-size: 24px;
+}
+main p {
+    font-weight: bold;
+    padding: 2px;
+}
+
+main {
+    position: relative;
+    margin-top: 20px;
+}
+.fav-recipe {
+    padding: 20px;
+    position: absolute;
+    height: 400px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fav-recipe:first-child {
+    left: 0px;
+}
+
+.fav-recipe:last-child {
+    right: 0px;
+}
+main ul {
+    position: absolute;
+    left: 0px;
+}
+main ol {
+    position: absolute;
+    right: 0px;
+}
