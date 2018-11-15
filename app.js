@@ -204,8 +204,12 @@ function renderRecipe() {
     //this function will push or splice our addons information into our base recipe.
     function createRecipe() {
         //this part adds the amount and name of each add on to the ingredient list
-        recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
-        recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
+        if (firstAddOn){
+            recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
+        }
+        if (secondAddOn){
+            recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
+        }
         //this splices the addDirections property from the add ons into the instructions array
         //this one is for chocolate chip cookies
         //TODO: add logic for new add-ins
