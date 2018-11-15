@@ -1,10 +1,4 @@
-body {
-    background-color: white;
-    margin: 50px;
-    /* background-image: url("./assets/whitebackground.jpg"); 
-    background-size:cover;
-    opacity: . */
-}       
+   
 
 #background-container {
     /* border: 5px solid red; */
@@ -20,11 +14,23 @@ body {
     opacity: 1;
 }
 
+
+html{
+    color: #A7620E;
+    font-family: 'Amatic SC', cursive;
+    margin: 5px 25px;
+}
+body {
+    background-image: url('../assets/confetti.gif');
+    margin: 10px; 
+    color: #A7620E;
+    font-family: 'Amatic SC', cursive;
+}
+
+
 h1 {
-    font-family: 'Roboto Slab', serif;
     font-size: 65px;
     text-align:center;
-    color: rgb(68, 25, 5)
 }
 
 img{height: 125px;
@@ -47,15 +53,11 @@ nav li {
 a{
     color: white;
 }
-
 #pick-cookie{
     display:inline-block;
     padding-top:20px;
     padding-left:400px;
-    color: rgb(241, 158, 80);
-    /* border-style: groove;
-    border-width: thick;
-    border-color: gray; */
+    color: rgb(70, 33, 9);
 }
 
  #order-box {/*border-style: dotted;
@@ -67,7 +69,6 @@ a{
     font-weight: bold;
     
 }
-
 #base-cookie {/*border-style: groove;
     border-width: thick;
     border-color: rgb(6, 68, 97 ); */
@@ -98,6 +99,7 @@ color:rgb(77, 40, 23);
 
 }
 
+
 #pick-cookie img {
     position: absolute;
     height: 275px;
@@ -110,7 +112,7 @@ color:rgb(77, 40, 23);
     border-radius: 5px;
     margin-top: 20px;
 }
- 
+
 .bottom-line{
     position: relative;
     top:300px;
