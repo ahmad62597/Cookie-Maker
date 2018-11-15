@@ -146,3 +146,19 @@ button {
     left: 80vw;
     
 }
+
+
+footer {
+    color: white;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-color: rgb(59, 66, 87);
+}
+footer a {
+    color: white;
+}
+footer p {
+    width: 100%;
+    text-align: center;
+}
