@@ -84,9 +84,9 @@ function AddOn(name, id, addDirections, amount, number) {
 //this functions holds all the new add ons that go into the array
 
 function makeAddOns(){
-    var chocolate_chip = new AddOn('Chocolate Chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
+    var chocolate_chip = new AddOn('Chocolate Chips', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
     var coconut = new AddOn('Coconut', 'Coconut', 'Mix in Coconut', '1 cup');
-    var peanut_butter = new AddOn('Peanut Butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
+    var cocoa = new AddOn('Cocoa Powder', 'cocoa', 'Mix in cocoa powder', '1/4 cup');
     var cinnamon = new AddOn('Cinnamon', 'cinnamon', 'Mix in Cinnamon', '1 tsp');
     var sprinkles = new AddOn('Sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
     var frosting = new AddOn('Frosting', 'frosting', 'Once cool, add frosting', '1 can');
