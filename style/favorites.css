@@ -21,11 +21,11 @@ main {
     margin-right: auto;
 }
 .fav-recipe:first-child {
-    left: 0px;
+    left: 5%;
 }
 
 .fav-recipe:last-child {
-    right: 0px;
+    right: 5%;
 }
 main ul {
     position: absolute;
@@ -33,5 +33,5 @@ main ul {
 }
 main ol {
     position: absolute;
-    right: 0px;
+    left: 50%;
 }
