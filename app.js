@@ -7,7 +7,7 @@ var chocolateChipRecipe = {
     ingredients: ['1 cup butter',
         '3/4 cups sugar',
         '3/4 cups brown sugar',
-        '1 teaspoon vanilla',
+        '1 tsp vanilla',
         '2 large eggs',
         '2 1/4 cups flour',
         '1 tsp baking soda',
@@ -83,7 +83,7 @@ function AddOn(name, id, addDirections, amount, number) {
 }
 //this functions holds all the new add ons that go into the array
 
-function makeAddOns(){
+function makeAddOns() {
     var chocolate_chip = new AddOn('Chocolate Chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
     var coconut = new AddOn('Coconut', 'Coconut', 'Mix in Coconut', '1 cup');
     var peanut_butter = new AddOn('Peanut Butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
@@ -312,26 +312,26 @@ function renderRecipe() {
             liEl.textContent = cookieTypeSelected.instructions[i];
         }
     }
-        // this will render and append our instructions to our recipe section
-    function renderInstructions (){
-         var olEl = document.createElement('ol')
-         recipeEl.appendChild(olEl);
-         for (var i =0; i < cookieTypeSelected.instructions.length; i++){
-             var liEl=document.createElement('li')
-             olEl.appendChild(liEl);
-             liEl.textContent=cookieTypeSelected.instructions[i];
-         }
+    // this will render and append our instructions to our recipe section
+    function renderInstructions() {
+        var olEl = document.createElement('ol')
+        recipeEl.appendChild(olEl);
+        for (var i = 0; i < cookieTypeSelected.instructions.length; i++) {
+            var liEl = document.createElement('li')
+            olEl.appendChild(liEl);
+            liEl.textContent = cookieTypeSelected.instructions[i];
+        }
     }
-   
-renderIngredientsList();
-renderInstructions();
-console.log('This code is running')
-document.getElementById('saveCookie').addEventListener('click', saveCookie);
-    function saveCookie(){
+
+    renderIngredientsList();
+    renderInstructions();
+    console.log('This code is running')
+    document.getElementById('saveCookie').addEventListener('click', saveCookie);
+    function saveCookie() {
         recipeHistory.push(recipe);
         var recipeJSON = JSON.stringify(recipeHistory);
         localStorage.setItem('recipes', recipeJSON);
-    }    
+    }
 }
 //This is for specifically printing the instructions from the recipe
 function printDiv(printDiv) {
@@ -364,4 +364,3 @@ function addOnCookieChoice() {
     firstAddOn = toppingsCounter[0];
     secondAddOn = toppingsCounter[1];
 }
-

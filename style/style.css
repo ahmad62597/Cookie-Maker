@@ -1,4 +1,3 @@
-   
 #background-container {
     /* border: 5px solid red; */
     height: 95vh;
@@ -30,6 +29,7 @@ body {
 h1 {
     font-size: 65px;
     text-align:center;
+    font-weight: bold;
 }
 
 img{height: 125px;
@@ -47,7 +47,9 @@ nav li {
     overflow: hidden;
     background-color: rgb(88, 192, 240);
     width: 33%;
-    border-radius: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 20px;
 }
 a{
     color: white;
@@ -57,6 +59,7 @@ a{
     padding-top:20px;
     padding-left:400px;
     color: rgb(70, 33, 9);
+    
 }
 
  #order-box {/*border-style: dotted;
@@ -64,8 +67,9 @@ a{
     border-color: rgb(77, 40, 23); */
     margin-top:20px;
     color: rgb(77, 40, 23);
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
+
     
 }
 #base-cookie {/*border-style: groove;
@@ -93,7 +97,7 @@ color:rgb(77, 40, 23);
     width: auto;
     height: auto;
     color:rgb(77, 40, 23);
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
 
 }
@@ -141,8 +145,41 @@ button {
     left: 40vw;
 }
 
-#print-recipe {
+#print-box{
     position: absolute;
     left: 80vw;
+    color: white;
+    background-color: tan;
+    border-radius: 25px;
+    padding: .99vw;
+    background-image: linear-gradient(rgba(70, 126, 199, 0.733),rgba(34, 121, 148, 0.842));
+    font-size: 15px;
     
+}
+
+#saveCookie{
+    position: absolute;
+    left: 0;
+    color: white;
+    background-color: tan;
+    border-radius: 25px;
+    padding: .99vw;
+    background-image: linear-gradient(rgba(70, 126, 199, 0.733),rgba(34, 121, 148, 0.842));
+    font-size: 15px;
+}
+
+canvas {
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+
+@media screen and (min-width: 450px) {
+	h1 {
+		font-size: 4rem;
+	}
+	h2 {
+		font-size: 2rem;
+	}
 }
