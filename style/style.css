@@ -180,6 +180,9 @@ footer {
     margin-top: 10px;
     margin-bottom: 0px;
     background-color: rgb(59, 66, 87);
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
 }
 footer a {
     color: white;
