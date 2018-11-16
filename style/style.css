@@ -1,4 +1,3 @@
-   
 #background-container {
     /* border: 5px solid red; */
     height: 95vh;
@@ -30,7 +29,6 @@ body {
 h1 {
     font-size: 65px;
     text-align:center;
-    font-weight: bold;
 }
 #recipe-box ul{
     list-style-type: circle;
@@ -60,7 +58,6 @@ a{
     padding-top:20px;
     padding-left:400px;
     color: rgb(70, 33, 9);
-    
 }
 
  #order-box {/*border-style: dotted;
@@ -69,7 +66,7 @@ a{
     margin-top:20px;
     margin-left: 130px;
     color: rgb(77, 40, 23);
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     display:inline-block;
     float: left;
@@ -99,7 +96,7 @@ color:rgb(77, 40, 23);
     width: auto;
     height: auto;
     color:rgb(77, 40, 23);
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     display: inline-block;
     float: right;
@@ -148,18 +145,11 @@ button {
     left: 40vw;
 }
 
-#print-box{
+#print-recipe {
     position: absolute;
-    left: 85vw;
-    color: white;
-    background-color: tan;
-    border-radius: 25px;
-    padding: .99vw;
-    background-image: linear-gradient(rgba(70, 126, 199, 0.733),rgba(34, 121, 148, 0.842));
-    font-size: 15px;
+    left: 80vw;
     
 }
-
 #bottom-buttons{
     position: relative;
     top: 200px;
