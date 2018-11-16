@@ -215,12 +215,12 @@ function renderRecipe() {
         //TODO: improve logic for amounts based on cookie selections
         if (recipe === chocolateChipRecipe) {
             //chocolate chips
-            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
-                recipe.instructions.splice(5, 0, addOn[0].addDirections)
-            }
             //coconut
             if (firstAddOn === addOn[1] || secondAddOn === addOn[1]) {
                 recipe.instructions.splice(5, 0, addOn[1].addDirections)
+            }
+            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
+                recipe.instructions.splice(5, 0, addOn[0].addDirections)
             }
             //peanut butter
             if (firstAddOn === addOn[2] || secondAddOn === addOn[2]) {
@@ -288,7 +288,7 @@ function renderRecipe() {
                 recipe.instructions.push(addOn[5].addDirections)
             }
             if (firstAddOn === addOn[6] || secondAddOn === addOn[6]) {
-                recipe.instructions.splice(4, 0, addOn[6].addDirections)
+                recipe.instructions.splice(3, 0, addOn[6].addDirections)
 
             }
         }

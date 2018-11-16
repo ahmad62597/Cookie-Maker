@@ -10,6 +10,7 @@
 </head>
 
 <body>
+        <STYLE>A {text-decoration: none;} </STYLE>
     <header>
             <h1> Cookie Maker </h1>
         <img src="assets/Fixedbanner.png" alt="Upper Banner">
@@ -22,6 +23,7 @@
         </nav>
     </header>
     <main>
+      <div ='content'>  
         <div id='order-box'>
             <form id=form-one>
                 <p> Please choose a cookie base and two (2) cookie add ons</p>
@@ -43,21 +45,21 @@
                 </div>
                 <div id='add-ons'>
                 </div>
-                <div>
+                <div id='bottom-buttons'>
                     <button type=submit id='get-cookie'> Get My Cookie! </button>
                     <button id="reset"> Reset!</button>
                 </div>
             </form>
         </div>
         <div id='recipe-box'>
-            <input type="button" onclick="printDiv('recipe-box')" value="Print the Recipe!"/>
+            <input type="button" id="print-box" onclick="printDiv('recipe-box')" value="Print the Recipe!"/>
             <input type="button" id='saveCookie' value="Save the cookie recipe"/>
         </div>    
-
+      </div>  
     </main>
     <footer>
         <p> Thanks for visiting! </p>
-        <p><a href='aboutus.html'>About</a></p>
+        <p><a href='aboutus.html'>About Us</a></p>
     </footer>
     <div id= "background-container"></div>
     <script src="app.js"></script>
