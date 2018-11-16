@@ -17,13 +17,13 @@
 html{
     color: #A7620E;
     font-family: 'Amatic SC', cursive;
-    margin: 5px 25px;
 }
 body {
     background-image: url('../assets/confetti.gif');
     margin: 10px; 
     color: #A7620E;
     font-family: 'Amatic SC', cursive;
+    font-size: 25px;
 }
 
 
@@ -32,11 +32,14 @@ h1 {
     text-align:center;
     font-weight: bold;
 }
+#recipe-box ul{
+    list-style-type: circle;
+}
 
-img{height: 125px;
+img{height: 100px;
     width:100%;
+
     opacity: 0.95;
-    border-radius: 25px;
 }
 
 nav li {
@@ -48,9 +51,6 @@ nav li {
     overflow: hidden;
     background-color: rgb(88, 192, 240);
     width: 33%;
-    border-radius: 15px;
-    font-weight: bold;
-    font-size: 20px;
 }
 a{
     color: white;
@@ -67,11 +67,12 @@ a{
     border-width: thick;
     border-color: rgb(77, 40, 23); */
     margin-top:20px;
+    margin-left: 130px;
     color: rgb(77, 40, 23);
     font-size: 30px;
     font-weight: bold;
-
-    
+    display:inline-block;
+    float: left;
 }
 #base-cookie {/*border-style: groove;
     border-width: thick;
@@ -94,13 +95,14 @@ color:rgb(77, 40, 23);
 #recipe-box{/*border-style: dotted;
     border-width: thick;
     border-color: rgb(77, 40, 23);*/ 
-    margin-top:20px;
+    margin:10px 250px;;
     width: auto;
     height: auto;
     color:rgb(77, 40, 23);
     font-size: 25px;
     font-weight: bold;
-
+    display: inline-block;
+    float: right;
 }
 
 
@@ -158,13 +160,23 @@ button {
     
 }
 
-#saveCookie{
-    position: absolute;
-    left: 70vw;
-    color: white;
-    background-color: tan;
-    border-radius: 25px;
-    padding: .99vw;
-    background-image: linear-gradient(rgba(70, 126, 199, 0.733),rgba(34, 121, 148, 0.842));
-    font-size: 15px;
+#bottom-buttons{
+    position: relative;
+    top: 200px;
+    right: 150px;
+}
+#savedText{
+    margin-left: 90px;
+}
+#recipe-box ul{
+    margin-bottom: 25px;
+}
+#printSaved ul{
+    margin-bottom: 25px;
+}
+#printSaved ul, #printSaved ol{
+    margin: 20px 75px;
+}
+#printSaved >li{
+    margin-left: 250px;
 }
