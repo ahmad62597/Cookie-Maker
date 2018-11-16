@@ -30,6 +30,10 @@ h1 {
     font-size: 65px;
     text-align:center;
 }
+
+h2 {
+    font-size: 32px;
+    text-align: center
 #recipe-box ul{
     list-style-type: circle;
 }
@@ -150,6 +154,24 @@ button {
     left: 80vw;
     
 }
+
+
+
+footer {
+    color: white;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-color: rgb(59, 66, 87);
+}
+footer a {
+    color: white;
+}
+footer p {
+    width: 100%;
+    text-align: center;
+}
+
 #bottom-buttons{
     position: relative;
     top: 200px;
@@ -170,3 +192,4 @@ button {
 #printSaved >li{
     margin-left: 250px;
 }
+

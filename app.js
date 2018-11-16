@@ -7,7 +7,7 @@ var chocolateChipRecipe = {
     ingredients: ['1 cup butter',
         '3/4 cups sugar',
         '3/4 cups brown sugar',
-        '1 teaspoon vanilla',
+        '1 tsp vanilla',
         '2 large eggs',
         '2 1/4 cups flour',
         '1 tsp baking soda',
@@ -84,9 +84,9 @@ function AddOn(name, id, addDirections, amount, number) {
 //this functions holds all the new add ons that go into the array
 
 function makeAddOns(){
-    var chocolate_chip = new AddOn('Chocolate Chip', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
+    var chocolate_chip = new AddOn('Chocolate Chips', 'chocolate_chip', 'Mix in Chocolate Chips', '1 cup');
     var coconut = new AddOn('Coconut', 'Coconut', 'Mix in Coconut', '1 cup');
-    var peanut_butter = new AddOn('Peanut Butter', 'peanut_butter', 'Mix in Peanut Butter until smooth', '1 cup');
+    var cocoa = new AddOn('Cocoa Powder', 'cocoa', 'Mix in cocoa powder', '1/4 cup');
     var cinnamon = new AddOn('Cinnamon', 'cinnamon', 'Mix in Cinnamon', '1 tsp');
     var sprinkles = new AddOn('Sprinkles', 'sprinkles', 'Sprinkle the sprinkles over the uncooked cookies', '1/2 cup');
     var frosting = new AddOn('Frosting', 'frosting', 'Once cool, add frosting', '1 can');
@@ -203,20 +203,24 @@ function renderRecipe() {
     //this function will push or splice our addons information into our base recipe.
     function createRecipe() {
         //this part adds the amount and name of each add on to the ingredient list
-        recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
-        recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
+        if (firstAddOn){
+            recipe.ingredients.push(firstAddOn.amount + ' ' + firstAddOn.name);
+        }
+        if (secondAddOn){
+            recipe.ingredients.push(secondAddOn.amount + ' ' + secondAddOn.name);
+        }
         //this splices the addDirections property from the add ons into the instructions array
         //this one is for chocolate chip cookies
         //TODO: add logic for new add-ins
         //TODO: improve logic for amounts based on cookie selections
         if (recipe === chocolateChipRecipe) {
             //chocolate chips
-            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
-                recipe.instructions.splice(5, 0, addOn[0].addDirections)
-            }
             //coconut
             if (firstAddOn === addOn[1] || secondAddOn === addOn[1]) {
                 recipe.instructions.splice(5, 0, addOn[1].addDirections)
+            }
+            if (firstAddOn === addOn[0] || secondAddOn === addOn[0]) {
+                recipe.instructions.splice(5, 0, addOn[0].addDirections)
             }
             //peanut butter
             if (firstAddOn === addOn[2] || secondAddOn === addOn[2]) {
@@ -284,7 +288,7 @@ function renderRecipe() {
                 recipe.instructions.push(addOn[5].addDirections)
             }
             if (firstAddOn === addOn[6] || secondAddOn === addOn[6]) {
-                recipe.instructions.splice(4, 0, addOn[6].addDirections)
+                recipe.instructions.splice(3, 0, addOn[6].addDirections)
 
             }
         }
