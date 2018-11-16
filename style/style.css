@@ -1,6 +1,5 @@
    
 #background-container {
-    /* border: 5px solid red; */
     height: 95vh;
     background-image: url("./assets/lowerborderdesign.png");
     background-size:cover;
@@ -67,46 +66,36 @@ a{
     color: rgb(70, 33, 9);
 }
 
- #order-box {/*border-style: dotted;
-    border-width: thick;
-    border-color: rgb(77, 40, 23); */
+ #order-box {
     margin-top:20px;
     margin-left: 130px;
     color: rgb(77, 40, 23);
     font-size: 20px;
     font-weight: bold;
-    display:inline-block;
-    float: left;
+    position: absolute;
+    left: 10%;
 }
-#base-cookie {/*border-style: groove;
-    border-width: thick;
-    border-color: rgb(6, 68, 97 ); */
+#base-cookie {
     margin-top:20px;
     width: 250px;
     height:100px;
     color: rgb(77, 40, 23);
 }
 
- #add-ons{ /*border-style: groove;
-border-width: thick;
-border-color: rgb(173, 213, 231); */ 
+ #add-ons{
 margin-top:20px;
 width:175px;
 color:rgb(77, 40, 23);
-
 }
 
-#recipe-box{/*border-style: dotted;
-    border-width: thick;
-    border-color: rgb(77, 40, 23);*/ 
-    margin:10px 250px;;
-    width: auto;
+#recipe-box{
+    width: 400px;
     height: auto;
     color:rgb(77, 40, 23);
     font-size: 20px;
     font-weight: bold;
-    display: inline-block;
-    float: right;
+    position: absolute;
+    right: 10%;
 }
 
 
