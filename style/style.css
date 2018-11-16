@@ -179,17 +179,15 @@ button {
 }
 
 footer {
-    color: white;
     align-content: center;
     margin-top: 10px;
     position:fixed;
     bottom: 0px;
-    background-color: rgb(88, 192, 240);
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
 }
 footer a {
-    color: white;
+    color: grey;
 }
 footer p {
     width: 100%;
