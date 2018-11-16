@@ -19,12 +19,15 @@ function printIngredients(){
             ulEl.appendChild(liEl);
         }
         mainEl.appendChild(ulEl);
+      
         for(var i = 0; i < getSaved[j].instructions.length; i++){
             var liEl = document.createElement('li');
             liEl.textContent = getSaved[j].instructions[i];
             olEl.appendChild(liEl);
         }
+        var listEl = document.createElement('li');
         mainEl.appendChild(olEl);
+        mainEl.appendChild(listEl);
     } 
 }
 printIngredients();
