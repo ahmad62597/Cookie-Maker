@@ -182,10 +182,11 @@ footer {
     color: white;
     align-content: center;
     margin-top: 10px;
-    margin-bottom: 0px;
-    background-color: rgb(59, 66, 87);
-    width: 100%;
+    position:fixed;
     bottom: 0px;
+    background-color: rgb(88, 192, 240);
+    width: 100%;
+    font-size: 12px;
 }
 footer a {
     color: white;
