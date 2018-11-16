@@ -306,16 +306,6 @@ function renderRecipe() {
             liEl.textContent = cookieTypeSelected.ingredients[i];
         } console.log('running')
     }
-    // this will render and append our instructions to our recipe section
-    function renderInstructions() {
-        var olEl = document.createElement('ol')
-        recipeEl.appendChild(olEl);
-        for (var i = 0; i < cookieTypeSelected.instructions.length; i++) {
-            var liEl = document.createElement('li')
-            olEl.appendChild(liEl);
-            liEl.textContent = cookieTypeSelected.instructions[i];
-        }
-    }
         // this will render and append our instructions to our recipe section
     function renderInstructions (){
          var olEl = document.createElement('ol')
